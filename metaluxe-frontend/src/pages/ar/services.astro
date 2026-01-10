@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaSection from '../../components/CtaSectionAR.astro';
+import { Settings, Hammer, Package, Flame, CheckCircle2, ArrowLeft } from 'lucide-react';
+
+// Data Structure for the Categories (Arabic Translation)
+const categories = [
+  {
+    id: "machining",
+    title: "خراطة وتشكيل دقيق",
+    icon: Settings,
+    desc: "خراطة وطحن دقيق باستخدام CNC للمكونات الميكانيكية المخصصة. قدرة على الإنتاج الضخم للآلات الصناعية وقطع الغيار.",
+    items: [
+        "تروس دقيقة ومسننات",
+        "وصلات أعمدة وبكرات",
+        "بكرات نايلون وفولاذ",
+        "خدمات تسنين الأنابيب",
+        "قطع غيار آلات مخصصة"
+    ],
+    // Lathe/CNC closeup (Metal shavings, very industrial)
+    image: "/images/category1.jpg"
+  },
+  {
+    id: "fabrication",
+    title: "الهياكل الفولاذية والتصنيع",
+    icon: Hammer,
+    desc: "لحام وتصنيع ثقيل لمشاريع البناء والبنية التحتية. من البوابات المعمارية إلى عوارض الدعم الهيكلية الضخمة.",
+    items: [
+        "بوابات حديدية وشبك",
+        "لوحات إعلانية هيكلية",
+        "أثاث معدني مخصص",
+        "هياكل فولاذية ثقيلة",
+        "خدمات التركيب في الموقع"
+    ],
+    // Welder with mask and sparks (Dark industrial setting)
+    image: "/images/category2.png"
+  },
+  {
+    id: "supplies",
+    title: "التجهيزات والمستلزمات الصناعية",
+    icon: Package,
+    desc: "تصنيع وتوريد المستلزمات الصناعية الأساسية لقطاعات النفط والغاز والمجال البحري.",
+    items: [
+        "تجهيزات هيدروليكية وحقول النفط",
+        "حلقات دائرية (O-Rings) وحشوات",
+        "أغطية نهايات مطاطية وPU",
+        "خراطيم وأنابيب EPDM",
+        "لوحات التدفق (Orifice Plates)"
+    ],
+    // Pile of raw steel pipes/rods (No houses, no copper plumbing)
+    image: "/images/category3.jpg"
+  },
+  {
+    id: "casting",
+    title: "أعمال السبكة والصب",
+    icon: Flame,
+    desc: "خدمات صب المعادن المتخصصة للأشكال المعقدة والمكونات الثقيلة المطلوبة في البيئات القاسية.",
+    items: [
+        "صب معادن مخصص",
+        "أعمال المسبك",
+        "أغطية وإطارات الصرف الصحي",
+        "موازين المعايرة",
+        "مسبوكات للمجال البحري"
+    ],
+    // Molten metal pouring (Orange glow, very distinct)
+    image: "/images/category4.png"
+  }
+];
+---
+
+<Layout title="خدماتنا" lang="ar">
+	
+	<!-- 1. HERO SECTION -->
+	<section class="relative h-[400px] flex items-center justify-center overflow-hidden">
+		<div class="absolute inset-0 z-0">
+			<img 
+				src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" 
+				alt="Industrial Production" 
+				class="w-full h-full object-cover"
+			/>
+			<div class="absolute inset-0 bg-primary/90 mix-blend-multiply"></div>
+		</div>
+		<div class="container mx-auto px-4 relative z-10 text-center">
+			<h1 class="text-5xl font-bold text-white mb-4 font-arabic">خدماتنا</h1>
+			<p class="text-accent text-lg font-medium tracking-widest uppercase font-arabic">
+				حلول هندسية شاملة
+			</p>
+		</div>
+	</section>
+
+    <!-- 2. INTRO: BULK CAPACITY NOTE -->
+    <section class="py-16 bg-white text-center">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-primary mb-6 font-arabic">من النماذج المخصصة إلى الإنتاج الضخم</h2>
+            <p class="text-gray-600 text-lg leading-relaxed font-arabic">
+                سواء كنت بحاجة إلى نموذج أولي واحد مخصص أو <strong>إنتاج بالجملة</strong>،
+                تمتلك ميتالوكس الآلات والقوة العاملة للتسليم. نحن متخصصون في التصنيع التعاقدي
+                لشركات البناء، وحقول النفط، والعطاءات الحكومية.
+            </p>
+        </div>
+    </section>
+
+	<!-- 3. SERVICES GRID -->
+	<section class="py-20 bg-primary-light border-t border-gray-800">
+		<div class="container mx-auto px-4">
+			
+            <div class="space-y-24">
+                {categories.map((cat, index) => (
+                    <div id={cat.id} class={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
+                        
+                        <!-- Image Side -->
+                        <div class="w-full lg:w-1/2">
+                            <div class="relative group">
+                                <div class="absolute -inset-2 bg-accent/20 rounded-lg transform -translate-x-2 translate-y-2 group-hover:-translate-x-1 group-hover:translate-y-1 transition duration-300"></div>
+                                <img 
+                                    src={cat.image} 
+                                    alt={cat.title} 
+                                    class="relative rounded-lg shadow-2xl w-full h-80 object-cover border border-gray-700 md:grayscale md:group-hover:grayscale-0 transition duration-500"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Content Side -->
+                        <div class="w-full lg:w-1/2">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-primary rounded border border-gray-700 flex items-center justify-center text-accent">
+                                    <cat.icon className="w-6 h-6" />
+                                </div>
+                                <span class="text-accent font-bold uppercase tracking-widest text-sm font-arabic">قسم الخدمة 0{index + 1}</span>
+                            </div>
+                            
+                            <h2 class="text-3xl font-bold text-white mb-6 font-arabic">{cat.title}</h2>
+                            <p class="text-gray-400 text-lg mb-8 leading-relaxed font-arabic">
+                                {cat.desc}
+                            </p>
+
+                            <!-- Item List -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                {cat.items.map((item) => (
+                                    <div class="flex items-center text-gray-300">
+                                        <CheckCircle2 className="w-5 h-5 text-accent ml-3 shrink-0" />
+                                        <span class="font-light font-arabic">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            <!-- Additional Note -->
+                            <p class="text-gray-500 text-sm italic mb-8 font-arabic">+ العديد من الحلول المخصصة الأخرى متاحة عند الطلب.</p>
+
+                            <!-- Link to Gallery -->
+                            <a href="/ar/gallery" class="inline-flex items-center text-accent font-bold uppercase tracking-wide hover:text-white transition group font-arabic">
+                                شاهد المعرض 
+                                <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                            </a>
+                        </div>
+
+                    </div>
+                ))}
+            </div>
+
+		</div>
+	</section>
+
+    <!-- Reuse the CTA from Homepage -->
+    <CtaSection />
+
+</Layout>

@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-react';
+---
+
+<Layout title="Contact Us">
+	
+	<!-- 1. HERO -->
+	<section class="bg-primary pt-32 pb-12 text-center border-b border-gray-800">
+		<div class="container mx-auto px-4">
+			<h1 class="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wider">
+				Get in <span class="text-accent">Touch</span>
+			</h1>
+			<p class="text-gray-400 max-w-2xl mx-auto">
+				Have an inquiry or requirement? Request a quote or visit our workshop in Musaffah.
+			</p>
+		</div>
+	</section>
+
+	<!-- 2. CONTACT INFO CARDS -->
+	<section class="py-16 bg-primary-light">
+		<div class="container mx-auto px-4">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-24">
+				
+				<!-- Phone -->
+				<div class="bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-xl text-center group hover:border-accent transition">
+					<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition">
+						<Phone className="w-8 h-8" />
+					</div>
+					<h3 class="text-white font-bold text-xl mb-4">Call Us</h3>
+					<div class="space-y-2">
+						<a href="tel:+97126228826" class="block text-gray-400 hover:text-white transition">+971 2 622 88 26 (Office)</a>
+						<a href="tel:+971504135810" class="block text-gray-400 hover:text-white transition">+971 50 413 5810 (Mobile)</a>
+					</div>
+				</div>
+
+				<!-- Email -->
+				<div class="bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-xl text-center group hover:border-accent transition">
+					<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition">
+						<Mail className="w-8 h-8" />
+					</div>
+					<h3 class="text-white font-bold text-xl mb-4">Email Us</h3>
+					<div class="space-y-2">
+						<a href="mailto:services@metaluxeuae.com" class="block text-gray-400 hover:text-white transition">services@metaluxeuae.com</a>
+						<a href="mailto:binshaheng@gmail.com" class="block text-gray-400 hover:text-white transition">binshaheng@gmail.com</a>
+					</div>
+				</div>
+
+				<!-- Visit -->
+				<div class="bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-xl text-center group hover:border-accent transition">
+					<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition">
+						<MapPin className="w-8 h-8" />
+					</div>
+					<h3 class="text-white font-bold text-xl mb-4">Visit Workshop</h3>
+					<p class="text-gray-400">
+						PO BOX 33646,<br/>
+						Musaffah Industrial Area,<br/>
+						Abu Dhabi, U.A.E
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- 3. FORM & MAP -->
+	<section class="py-20 bg-primary border-t border-gray-800">
+		<div class="container mx-auto px-4">
+			<div class="flex flex-col lg:flex-row gap-12">
+				
+				<!-- Left: The Form -->
+				<div class="lg:w-1/2">
+					<h2 class="text-3xl font-bold text-white mb-2">Request a Quote</h2>
+					<p class="text-gray-400 mb-8">Fill out the form below and our engineering team will get back to you within 24 hours.</p>
+
+                    <!-- Success/Error Message Container -->
+                    <div id="form-message" class="hidden mb-6 p-4 rounded text-sm font-bold"></div>
+
+					<form id="contact-form" class="space-y-6">
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label class="block text-gray-500 text-sm font-bold mb-2">Your Name *</label>
+								<input type="text" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" />
+							</div>
+							<div>
+								<label class="block text-gray-500 text-sm font-bold mb-2">Phone Number</label>
+								<input type="tel" name="phone" class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" placeholder="+971 50..." />
+							</div>
+						</div>
+
+						<div>
+							<label class="block text-gray-500 text-sm font-bold mb-2">Email Address *</label>
+							<input type="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" />
+						</div>
+
+						<div>
+							<label class="block text-gray-500 text-sm font-bold mb-2">Message / Comment *</label>
+							<textarea name="message" required rows="4" class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" placeholder="How can we help you?"></textarea>
+						</div>
+
+						<button type="submit" id="submit-btn" class="w-full bg-accent hover:bg-accent-hover text-primary font-bold py-4 rounded flex items-center justify-center gap-2 transition transform hover:scale-[1.02]">
+							<span id="btn-text" class="flex items-center gap-2"><Send className="w-5 h-5" /> Send Message</span>
+                            <!-- Loader (Hidden by default) -->
+                            <span id="btn-loader" class="hidden flex items-center justify-center gap-2"><Loader2 className="w-5 h-5 animate-spin" /> Sending...</span>
+						</button>
+					</form>
+				</div>
+
+				<!-- Right: Map -->
+				<div class="lg:w-1/2 flex flex-col gap-8">
+					<!-- Map Container with Custom Overlay -->
+					<div class="bg-gray-800 p-2 rounded-lg border border-gray-700 h-[500px] md:h-[400px] relative overflow-hidden group">
+						
+						<!-- 1. The Real Map Iframe (Coordinates for METALUXE) -->
+						<iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0"
+                            allowfullscreen=""
+                            loading="lazy"
+                            src="https://maps.google.com/maps?q=24.3766441,54.4919773&hl=en&z=15&amp;output=embed"
+							class="grayscale-0 md:grayscale md:group-hover:grayscale-0 transition duration-700 relative z-0 h-full w-full pointer-events-auto"
+						>
+						</iframe>
+
+						<!-- 2. Custom Floating Card (hides underlying generic UI & mimics valid style without reviews) -->
+						<div class="absolute z-20 pointer-events-auto bg-white border-gray-200 transition-transform duration-300 md:group-hover:-translate-y-1 top-4 left-4 w-[230px] border rounded shadow-lg p-4 md:w-[280px] md:p-5">
+							<h3 class="font-bold text-gray-900 text-base mb-1">METALUXE Workshop</h3>
+							<p class="text-[11px] text-gray-500 font-medium uppercase tracking-wide mb-2">Formerly Bin Shaheen</p>
+							
+							<p class="text-xs text-gray-600 mb-4 leading-relaxed">
+								8FX9+3P7<br>
+								Musaffah Industrial (MW4)<br>
+								Abu Dhabi, UAE
+							</p>
+							
+							<div class="flex items-center gap-3">
+								<a href="https://maps.app.goo.gl/7qUbS6Jhj8Qm3pBNA" target="_blank" rel="noopener noreferrer" class="text-blue-600 text-xs font-bold uppercase tracking-wide hover:underline">
+									View larger map
+								</a>
+								<a href="https://maps.app.goo.gl/7qUbS6Jhj8Qm3pBNA" target="_blank" rel="noopener noreferrer" class="ml-auto w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white hover:bg-blue-700 transition">
+									<Navigation className="w-4 h-4 fill-current" />
+								</a>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+						<div class="flex items-center gap-4 mb-6">
+							<Clock className="w-8 h-8 text-accent" />
+							<h3 class="text-white font-bold text-xl">Working Hours</h3>
+						</div>
+						<ul class="space-y-4 text-gray-400">
+							<li class="flex justify-between border-b border-gray-700 pb-2">
+								<span>Monday - Saturday</span>
+								<span class="text-white font-medium">8:00 AM - 8:00 PM</span>
+							</li>
+							<li class="flex justify-between text-accent">
+								<span>Sunday</span>
+								<span>Closed</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</Layout>
+
+<!-- CLIENT-SIDE LOGIC -->
+<script>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnLoader = document.getElementById('btn-loader');
+    const messageDiv = document.getElementById('form-message');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Stop page reload
+
+        // 1. Show Loading State
+        submitBtn.disabled = true;
+        btnText.classList.add('hidden');
+        btnLoader.classList.remove('hidden');
+        messageDiv.classList.add('hidden');
+
+        // 2. Gather Data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Email send failed.');
+            }
+
+            // 3. Success State
+            messageDiv.textContent = "Message sent successfully! We will contact you soon.";
+            messageDiv.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
+            messageDiv.classList.add('bg-green-500/20', 'text-green-400');
+            form.reset();
+
+        } catch (error) {
+            // 4. Error State
+            messageDiv.textContent = error?.message || "Something went wrong. Please try again.";
+            messageDiv.classList.remove('hidden', 'bg-green-500/20', 'text-green-400');
+            messageDiv.classList.add('bg-red-500/20', 'text-red-400');
+        } finally {
+            // 5. Reset Button
+            submitBtn.disabled = false;
+            btnText.classList.remove('hidden');
+            btnLoader.classList.add('hidden');
+        }
+    });
+</script>

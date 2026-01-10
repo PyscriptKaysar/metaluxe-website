@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { Building2, Calendar, MapPin, X, CheckCircle2, Package } from 'lucide-react';
+
+const caseStudies = [
+  {
+    id: "project-1",
+    client: "Municipal Authority",
+    title: "Public Park Infrastructure & Signage",
+    location: "Abu Dhabi, UAE",
+    year: "2023",
+    desc: "Complete fabrication and installation of architectural steel elements, including custom wayfinding signage, benches, and lighting poles for a public park.",
+    mainImage: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1000",
+    tags: ["Infrastructure", "Architectural Metalwork"],
+    stats: {
+        quantity: "50+ Installations",
+        duration: "3 Months",
+        manpower: "15 Person Team"
+    },
+    scope: [
+        "Fabrication of Structural Sign Boards",
+        "Custom Steel Benches & Seating",
+        "Galvanized Powder Coating",
+        "Civil Foundation Works"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1000",
+        "https://images.unsplash.com/photo-1621259654101-72da9a184136?auto=format&fit=crop&q=80"
+    ]
+  },
+  {
+    id: "project-2",
+    client: "Energy Sector Contractor",
+    title: "Precision Downhole Drilling Tools",
+    location: "Musaffah Industrial Area",
+    year: "2023",
+    desc: "High-precision CNC machining of specialized drill components and housings manufactured from high-grade alloy steel.",
+    mainImage: "https://images.unsplash.com/photo-1581093458791-9f302e6d8a6b?auto=format&fit=crop&q=80&w=1000",
+    tags: ["Oil & Gas", "CNC Machining"],
+    stats: {
+        quantity: "200 Components",
+        duration: "4 Weeks",
+        tolerance: "+/- 0.01mm"
+    },
+    scope: [
+        "CNC Turning & Milling Operations",
+        "Heat Treatment Coordination",
+        "Precision Thread Gauging",
+        "Material Traceability Reporting"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1622340274296-6e5454b5df56?auto=format&fit=crop&q=80"
+    ]
+  },
+  {
+    id: "project-3",
+    client: "Descon Engineering",
+    title: "Industrial Storage Tanks",
+    location: "Musaffah Industrial Area",
+    year: "2021",
+    desc: "Design and fabrication of 4 custom stainless steel storage tanks for a chemical processing plant.",
+    mainImage: "https://images.unsplash.com/photo-1535068484675-c990924d62fb?auto=format&fit=crop&q=80&w=1000",
+    tags: ["Fabrication", "Welding"],
+    stats: {
+        quantity: "4 Units (20,000L)",
+        duration: "8 Weeks",
+        material: "SS 316L Grade"
+    },
+    scope: [
+        "Rolling and Dishing of Shell Plates",
+        "Full Penetration Welding",
+        "Internal Polishing (Food Grade)",
+        "Installation of Agitators"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?auto=format&fit=crop&q=80"
+    ]
+  }
+];
+---
+
+<Layout title="Projects & Case Studies">
+	
+	<!-- HERO -->
+	<section class="bg-primary pt-32 pb-12 text-center border-b border-gray-800">
+		<div class="container mx-auto px-4">
+			<h1 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-wider">
+				Major <span class="text-accent">Projects</span>
+			</h1>
+			<p class="text-gray-400 max-w-2xl mx-auto mt-2">
+				Delivering engineering excellence for the UAE's leading companies.
+			</p>
+		</div>
+	</section>
+
+	<!-- CASE STUDIES GRID -->
+	<section class="py-20 bg-primary min-h-screen">
+		<div class="container mx-auto px-4">
+			<div class="space-y-12">
+				{caseStudies.map((study) => (
+					<div class="bg-gray-800 rounded-lg overflow-hidden flex flex-col md:flex-row border border-gray-700 hover:border-accent transition group">
+						<!-- Main Image -->
+						<div class="h-64 md:h-auto md:w-2/5 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition z-10"></div>
+							<img src={study.mainImage} alt={study.title} class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
+						</div>
+						
+                        <!-- Content Preview -->
+						<div class="md:w-3/5 p-8 flex flex-col justify-center">
+							<div class="flex flex-wrap gap-2 mb-4">
+								{study.tags.map(tag => (
+									<span class="text-xs font-bold text-primary bg-accent px-2 py-1 rounded uppercase tracking-wide">{tag}</span>
+								))}
+							</div>
+							<h3 class="text-2xl font-bold text-white mb-2">{study.title}</h3>
+							<div class="flex flex-wrap gap-6 text-sm text-gray-400 mb-6">
+								<span class="flex items-center"><Building2 className="w-4 h-4 mr-2 text-accent"/> {study.client}</span>
+								<span class="flex items-center"><MapPin className="w-4 h-4 mr-2 text-accent"/> {study.location}</span>
+								<span class="flex items-center"><Calendar className="w-4 h-4 mr-2 text-accent"/> {study.year}</span>
+							</div>
+							<p class="text-gray-300 leading-relaxed mb-8">
+								{study.desc}
+							</p>
+                            
+                            <!-- Button to Open Modal -->
+                            <button 
+                                class="open-modal-btn w-fit px-6 py-3 border border-white text-white font-bold text-sm uppercase rounded hover:bg-white hover:text-primary transition"
+                                data-id={study.id}
+                            >
+                                View Project Details
+                            </button>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+    <!-- HIDDEN MODAL COMPONENT -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" id="modal-backdrop"></div>
+        
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <!-- INCREASED WIDTH HERE: max-w-6xl -->
+            <div class="bg-gray-900 w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-lg border border-gray-700 shadow-2xl relative animate-fade-in-up">
+                
+                <button id="close-modal" class="sticky top-4 right-4 float-right text-gray-400 hover:text-white z-20 bg-black/50 p-2 rounded-full">
+                    <X className="w-6 h-6" />
+                </button>
+
+                <div class="p-8 md:p-12" id="modal-content">
+                    <!-- Content injected via JS -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <CtaSection />
+
+</Layout>
+
+<script define:vars={{ caseStudies }}>
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const contentDiv = document.getElementById('modal-content');
+    const buttons = document.querySelectorAll('.open-modal-btn');
+
+    function generateModalHTML(project) {
+        return `
+            <div class="flex flex-col gap-8">
+                <div>
+                    <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">${project.client}</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">${project.title}</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg max-w-3xl">${project.desc}</p>
+                </div>
+
+                <!-- Key Stats Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-800 p-8 rounded-lg border border-gray-700">
+                    <div class="col-span-2 lg:col-span-1">
+                        <span class="block text-gray-500 text-sm uppercase mb-1">Quantity / Scale</span>
+                        <span class="block text-white font-bold text-xl md:text-2xl">${project.stats.quantity}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 text-sm uppercase mb-1">Timeline</span>
+                        <span class="block text-white font-bold text-xl md:text-2xl">${project.stats.duration}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 text-sm uppercase mb-1">Key Spec</span>
+                        <span class="block text-white font-bold text-xl md:text-2xl">${project.stats.manpower || project.stats.pressure || project.stats.material}</span>
+                    </div>
+                </div>
+
+                <!-- Scope & Gallery Split -->
+                <div class="flex flex-col lg:flex-row gap-12">
+                    
+                    <!-- Scope List -->
+                    <div class="lg:w-1/3">
+                        <h3 class="text-white font-bold uppercase mb-6 border-b border-gray-700 pb-2 text-lg">Work Scope</h3>
+                        <ul class="space-y-4">
+                            ${project.scope.map(item => `
+                                <li class="flex items-start text-gray-300 text-base">
+                                    <span class="text-accent mr-3 mt-1">✓</span> ${item}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <!-- Gallery Images -->
+                    <div class="lg:w-2/3 grid grid-cols-1 gap-6">
+                        <h3 class="text-white font-bold uppercase mb-2 border-b border-gray-700 pb-2 text-lg">Project Gallery</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            ${project.gallery.map(img => `
+                                <!-- INCREASED HEIGHT: h-48 -->
+                                <img src="${img}" class="rounded border border-gray-700 w-full h-48 lg:h-64 object-cover hover:scale-[1.02] transition cursor-pointer shadow-lg" alt="Project detail">
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            const project = caseStudies.find(p => p.id === id);
+            
+            if (project) {
+                contentDiv.innerHTML = generateModalHTML(project);
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; 
+            }
+        });
+    });
+
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+</script>

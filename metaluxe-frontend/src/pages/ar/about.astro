@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaSection from '../../components/CtaSectionAR.astro';
+import { CheckCircle2, Heart, Users, Zap, ShieldCheck, Calendar, Award } from 'lucide-react';
+
+const facilities = [
+  "مخارط ثقيلة (Lathe Machines)",
+  "ماكينات طحن عالمية (Milling)",
+  "ماكينات حفر نصف قطرية (Radial Drilling)",
+  "وحدات ضغط هيدروليكية",
+  "محطات لحام (MIG/TIG/Arc)",
+  "أنظمة قص بالبلازما والغاز",
+  "معدات مناولة ورفع المواد",
+  "وحدات جلخ دقيقة"
+];
+
+const values = [
+  { title: "العمل بنزاهة", icon: ShieldCheck, desc: "النزاهة هي أساس عملنا في كل خطوة." },
+  { title: "جودة لا تضاهى", icon: CheckCircle2, desc: "تقديم التميز في كل عملية تصنيع ولحام." },
+  { title: "علاقات صادقة", icon: Users, desc: "بناء شراكات طويلة الأمد مع عملائنا." },
+  { title: "شغف بالعمل", icon: Heart, desc: "التفاني والإخلاص في الحرفة الهندسية." },
+  { title: "تبني التغيير", icon: Zap, desc: "التحسين المستمر لتقنياتنا وأساليبنا." }
+];
+---
+
+<Layout title="من نحن" lang="ar">
+	
+	<!-- 1. HERO SECTION -->
+	<section class="relative h-[400px] flex items-center justify-center overflow-hidden">
+		<div class="absolute inset-0 z-0">
+			<img 
+				src="/images/aboutus3.png" 
+				alt="Metaluxe Workshop Interior" 
+				class="w-full h-full object-cover"
+			/>
+			<div class="absolute inset-0 bg-primary/90 mix-blend-multiply"></div>
+		</div>
+		<div class="container mx-auto px-4 relative z-10 text-center">
+			<h1 class="text-5xl font-bold text-white mb-4 font-arabic">من نحن</h1>
+			<p class="text-accent text-lg font-medium tracking-widest uppercase font-arabic">
+				التميز والجودة في أفضل مستوياتها
+			</p>
+		</div>
+	</section>
+
+	<!-- 2. MISSION & PROFILE -->
+	<section class="py-24 bg-primary text-gray-300">
+		<div class="container mx-auto px-4 flex flex-col lg:flex-row gap-16 items-start">
+			
+			<!-- Content Side (Right in RTL) -->
+			<div class="lg:w-1/2">
+				<h2 class="text-3xl font-bold text-white mb-6 font-arabic">
+					رسالتنا <span class="text-accent">وهدفنا</span>
+				</h2>
+				
+				<p class="text-xl text-white font-light leading-relaxed mb-8 border-r-4 border-accent pr-6 font-arabic">
+					"توفير حلول التصنيع والتركيب والأعمال المعدنية عالية الجودة للمشاريع الصناعية والتجارية والسكنية بسعر عادل وتنافسي."
+				</p>
+
+				<div class="space-y-6 leading-relaxed font-light text-lg font-arabic">
+					<p>
+						نحن نلتزم بتقديم التميز والقيمة في حلولنا الهيكلية. نهجنا المخصص يضمن نتائج متوقعة، ونمواً مستمراً، وفرصاً واعدة، وعلاقات ذات منفعة متبادلة.
+					</p>
+					<p>
+						تأسست الشركة عام 1992 (سابقاً ورشة بن شاهين)، ونمت <strong>ميتالوكس</strong> لتصبح المكان الوحيد الذي ستحصل فيه على الحل الأمثل لجميع احتياجات تصنيع المعادن والخراطة والطحن.
+					</p>
+				</div>
+
+				<!-- Certification Badge -->
+				<div class="mt-10 flex items-center gap-4 bg-gray-800/50 p-4 rounded-lg border border-gray-700 inline-flex">
+					<div class="bg-white p-2 rounded h-12 w-20 flex items-center justify-center">
+						<img src="/images/adnoc-icv.jpg" alt="ADNOC ICV" class="h-full object-contain">
+					</div>
+					<div>
+						<span class="block text-white font-bold text-sm font-arabic">معتمدة من أدنوك (ICV)</span>
+						<span class="block text-gray-500 text-xs font-arabic">عبر الهدايا الهلالية (ID-107914)</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Image Side -->
+			<div class="lg:w-1/2 grid grid-cols-2 gap-4">
+				<div class="space-y-4">
+					<img src="/images/aboutus1.png"  class="rounded-lg shadow-xl h-64 w-full object-cover" alt="Workshop">
+					<div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative overflow-hidden group">
+						<div class="relative z-10">
+							<h3 class="text-accent font-bold text-4xl mb-1">1992</h3>
+							<p class="text-sm text-gray-400 uppercase tracking-wide font-arabic">سنة التأسيس</p>
+						</div>
+						<Calendar className="absolute -bottom-6 -left-6 w-24 h-24 text-gray-700/20 rotate-12 group-hover:scale-110 transition-transform duration-500" />
+					</div>
+				</div>
+				<div class="space-y-4 pt-8">
+					<div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative overflow-hidden group">
+						<div class="relative z-10">
+							<h3 class="text-white font-bold text-xl mb-1">100%</h3>
+							<p class="text-sm text-gray-400 uppercase tracking-wide font-arabic">تركيز على الجودة</p>
+						</div>
+						<Award className="absolute -bottom-6 -left-6 w-24 h-24 text-gray-700/20 rotate-12 group-hover:scale-110 transition-transform duration-500" />
+					</div>
+					<img src="/images/aboutus2.png" class="rounded-lg shadow-xl h-64 w-full object-cover" alt="Machining">
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- 3. CORE VALUES -->
+	<section class="py-20 bg-primary-light border-y border-gray-800">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl font-bold text-white uppercase tracking-widest font-arabic">قيمنا الجوهرية</h2>
+			</div>
+			
+			<div class="flex flex-col gap-6 md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-10">
+				{values.map((value) => (
+					<div class="flex flex-row md:flex-col items-center md:items-center text-right md:text-center gap-4 md:gap-0 group">
+						<div class="w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-full flex items-center justify-center md:mb-6 shrink-0 group-hover:bg-accent group-hover:text-primary transition duration-300 text-accent border border-gray-700 shadow-lg">
+							<value.icon className="w-6 h-6 md:w-8 md:h-8" />
+						</div>
+
+						<div>
+							<h3 class="text-white font-bold text-lg mb-1 md:mb-3 font-arabic">{value.title}</h3>
+							<p class="text-sm text-gray-400 leading-relaxed font-arabic">{value.desc}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 4. FACILITIES & EQUIPMENT -->
+	<section class="py-24 bg-primary">
+		<div class="container mx-auto px-4">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl font-bold text-white mb-4 font-arabic">قدرات الورشة</h2>
+				<p class="text-gray-400 max-w-2xl mx-auto font-arabic">
+					منشأتنا في مصفح مجهزة بالكامل لتقديم حلول تصنيع وتشكيل شاملة من البداية إلى النهاية.
+				</p>
+			</div>
+
+			<div class="flex flex-wrap gap-3 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6">
+				{facilities.map((item) => (
+					<div class="bg-gray-800/40 px-5 py-3 md:p-6 rounded-full md:rounded-lg border border-gray-700 flex items-center md:items-start gap-3 md:gap-4 hover:border-accent transition group">
+						<CheckCircle2 className="w-5 h-5 text-accent shrink-0 group-hover:scale-110 transition" />
+						<span class="text-gray-200 font-medium text-base leading-relaxed font-arabic">{item}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+    <CtaSection />
+
+</Layout>

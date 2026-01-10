@@ -1,0 +1,122 @@
+---
+import { Phone, Mail, Menu, X } from 'lucide-react';
+---
+
+<!-- 1. Top Bar -->
+<div class="bg-primary-light border-b border-gray-700 text-xs py-2">
+    <div class="container mx-auto px-4 flex justify-between items-center text-gray-400">
+        <div class="flex gap-4">
+            <a href="tel:+97126228826" class="flex items-center hover:text-accent transition">
+                <Phone className="w-3 h-3 mr-1" /> +971 2 622 88 26
+            </a>
+            <a href="mailto:services@metaluxeuae.com" class="hidden md:flex items-center hover:text-accent transition">
+                <Mail className="w-3 h-3 mr-1" /> services@metaluxeuae.com
+            </a>
+        </div>
+        <div class="flex gap-4">
+            <span class="hidden xs:inline text-gray-500">Abu Dhabi, UAE</span>
+            <a href="/ar" class="hover:text-white font-bold">العربية</a>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Main Navigation -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        
+        <!-- Logo -->
+        <a href="/" class="flex items-center">
+            <img 
+                src="/images/metaluxe.png" 
+                alt="Metaluxe" 
+                class="h-14 w-auto object-contain brightness-110 contrast-125" 
+            />
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex gap-8 items-center text-sm font-bold text-primary">
+            <a href="/" class="hover:text-accent transition">HOME</a>
+            <a href="/about" class="hover:text-accent transition">ABOUT</a>
+            <a href="/services" class="hover:text-accent transition">SERVICES</a>
+            <!-- NEW LINK ADDED HERE -->
+            <a href="/gallery" class="hover:text-accent transition">GALLERY</a>
+            <a href="/projects" class="hover:text-accent transition">PROJECTS</a>
+            
+            <a href="/contact" class="bg-accent hover:bg-accent-hover text-primary font-bold py-2 px-6 rounded transition">
+                GET A QUOTE
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden text-primary p-2" aria-label="Toggle Menu">
+            <Menu className="w-8 h-8" />
+        </button>
+
+    </div>
+
+    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
+        
+        <!-- Header inside Menu -->
+        <div class="flex justify-between items-center p-4 border-b border-gray-100">
+            <a href="/" class="flex items-center">
+               <!-- Logo -->
+                <img 
+                    src="/images/metaluxe.png" 
+                    alt="Metaluxe" 
+                    class="h-12 w-auto object-contain" 
+                />
+            </a>
+            <button id="close-menu-btn" class="text-primary p-2">
+                <X className="w-8 h-8" />
+            </button>
+        </div>
+
+        <!-- Links -->
+        <div class="flex-grow flex flex-col justify-center items-center gap-8 text-xl font-bold text-primary">
+            <a href="/" class="hover:text-accent transition mobile-link">HOME</a>
+            <a href="/about" class="hover:text-accent transition mobile-link">ABOUT</a>
+            <a href="/services" class="hover:text-accent transition mobile-link">SERVICES</a>
+            <a href="/gallery" class="hover:text-accent transition mobile-link">GALLERY</a>
+            <a href="/projects" class="hover:text-accent transition mobile-link">PROJECTS</a>
+            
+            <a href="/contact" class="bg-accent text-primary px-8 py-3 rounded mt-4 mobile-link">
+                GET A QUOTE
+            </a>
+        </div>
+
+        <!-- Footer inside Menu -->
+        <div class="p-8 border-t border-gray-100 text-center text-gray-500 text-sm">
+            <a href="/ar" class="text-primary border border-gray-300 px-4 py-2 rounded mb-4 inline-block hover:border-accent hover:text-accent">
+                Switch to Arabic / العربية
+            </a>
+            <p>Metaluxe Engineering &copy; {new Date().getFullYear()}</p>
+        </div>
+
+    </div>
+
+</header>
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMenu() {
+        if (!mobileMenu) return;
+        mobileMenu.classList.toggle('translate-x-full');
+        // Prevent scrolling when menu is open
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    if (menuBtn && closeBtn) {
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    }
+</script>

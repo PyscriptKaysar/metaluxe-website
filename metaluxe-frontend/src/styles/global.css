@@ -1,0 +1,22 @@
+/* 1. Import Fonts: Oswald (Headings), Inter (Body), and Tajawal (Arabic) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;500;700&family=Tajawal:wght@400;500;700;800&display=swap');
+
+/* 2. Initialize Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Default to Dark Blue background and White text */
+  @apply bg-primary text-gray-100 font-sans antialiased;
+}
+
+/* 4. Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading uppercase tracking-wide;
+}

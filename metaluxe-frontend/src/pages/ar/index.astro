@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ClientsAR from '../../components/ClientsAR.astro';
+import ServicesAR from '../../components/ServicesAR.astro';
+import FeaturedProjectsAR from '../../components/FeaturedProjectsAR.astro';
+import CtaSectionAR from '../../components/CtaSectionAR.astro';
+import { ArrowLeft } from 'lucide-react';
+---
+
+<Layout title="Home" lang="ar">
+	
+	<!-- HERO SECTION -->
+	<section class="relative h-[600px] flex items-center justify-center overflow-hidden">
+		
+		<!-- Background Image -->
+		<div class="absolute inset-0 z-0">
+			<img 
+				src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop" 
+				alt="Industrial Steel Fabrication Workshop" 
+				class="w-full h-full object-cover"
+			/>
+			<div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+			<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="container mx-auto px-4 relative z-10 text-center">
+			
+			<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1 rounded-full mb-6">
+				<span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+				<span class="text-gray-200 text-sm font-medium tracking-wide">تأسست عام 1992</span>
+			</div>
+
+			<h1 class="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+				التصنيع الدقيق <span class="text-accent">للمعادن</span> <br/>
+				والحلول الهندسية
+			</h1>
+
+			<p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
+				ورشة هندسية متكاملة تقدم حلولاً معدنية متنوعة. من الخراطة والطحن الصناعي الثقيل إلى التجهيزات السكنية المخصصة ومشاريع البنية التحتية الحكومية.
+			</p>
+
+			<div class="flex flex-col md:flex-row gap-4 justify-center">
+				<a href="/ar/contact" class="bg-accent hover:bg-accent-hover text-primary font-bold py-4 px-8 rounded flex items-center justify-center gap-2 transition transform hover:scale-105">
+					اطلب عرض سعر
+					<ArrowLeft className="w-5 h-5" />
+				</a>
+				<a href="/ar/services" class="bg-transparent border-2 border-white/30 hover:bg-white hover:text-primary text-white font-bold py-4 px-8 rounded transition">
+					استكشف خدماتنا
+				</a>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- TRUST BAR (Stats) -->
+	<section class="bg-primary border-b border-gray-800 py-8">
+		<div class="container mx-auto px-4">
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-x-reverse divide-gray-800">
+				
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">+30</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">عاماً من الخبرة</span>
+				</div>
+
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">ADNOC</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">معتمدة من أدنوك</span>
+				</div>
+
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">100%</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">تركيز على الجودة</span>
+				</div>
+
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">في الوقت</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">الالتزام بالتسليم</span>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+    <!-- Components below should now be Arabic -->
+    <ClientsAR />
+	<ServicesAR />
+	<FeaturedProjectsAR />
+    <CtaSectionAR />
+
+</Layout>

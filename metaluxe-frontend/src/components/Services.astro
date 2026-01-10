@@ -1,0 +1,286 @@
+---
+import { Hammer, Settings, Anchor, Flame, Cpu, HardHat, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const services = [
+  {
+    title: "Steel Fabrication",
+    desc: "Versatile fabrication solutions ranging from heavy industrial structures to custom architectural metalwork.",
+    icon: Hammer,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/steelfabrication.png"
+  },
+  {
+    title: "Precision Machining",
+    desc: "Advanced lathe and milling works for custom parts, shafts, and gears.",
+    icon: Settings,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/milling.jpg"
+  },
+  {
+    title: "Marine & Offshore",
+    desc: "Specialized fabrication for marine vessels, irrigation systems, and offshore rigs.",
+    icon: Anchor,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/lathe.jpg"
+  },
+  {
+    title: "Casting & Foundry",
+    desc: "High-quality metal casting services for custom components and machinery parts.",
+    icon: Flame,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/casting.jpg"
+  },
+  {
+    title: "CNC Production",
+    desc: "Computer-controlled production for high-precision batch manufacturing.",
+    icon: Cpu,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/CNC.jpg"
+  },
+  {
+    title: "Installation & Erection",
+    desc: "On-site installation of structural steel and process equipment across the UAE.",
+    icon: HardHat,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80"
+  }
+];
+---
+
+<section class="py-20 bg-primary relative">
+    <div class="container mx-auto px-4">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-accent font-bold tracking-widest uppercase text-sm">What We Do</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mt-2 mb-4">Core Capabilities</h2>
+            <p class="text-gray-400">
+                From raw raw material to finished product, we provide end-to-end engineering solutions for the UAE's most demanding industries.
+            </p>
+        </div>
+
+        <!-- Desktop Grid -->
+        <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+                <div class="group p-8 bg-primary-light rounded-lg border border-gray-700 hover:border-accent transition duration-500 relative overflow-hidden h-full">
+                    
+                    <!-- BACKGROUND IMAGE LAYER (Hidden by default, visible on hover) -->
+                    <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition duration-500 ease-out">
+                         
+                        <!-- The Image Itself -->
+                        <img 
+                            src={service.image} 
+                            alt={service.title} 
+                            class="w-full h-full object-cover opacity-50" 
+                        />
+                        
+                        <!-- Dark Overlay (so text stays readable) -->
+                        <div class="absolute inset-0 bg-primary/90 group-hover:bg-primary/60 transition-colors duration-500"></div>
+                    </div>
+
+                    <!-- CONTENT LAYER -->
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="w-14 h-14 bg-primary border border-gray-600 rounded-lg flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:bg-accent group-hover:text-primary transition duration-300 shadow-xl">
+                            <service.icon className="w-8 h-8" />
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 text-shadow">{service.title}</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 group-hover:text-gray-100 transition-colors">
+                            {service.desc}
+                        </p>
+                        <div class="mt-auto">
+                            <a href="/services" class="inline-flex items-center text-accent text-sm font-bold uppercase tracking-wide hover:text-white transition">
+                                Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <!-- Mobile Carousel -->
+        <div class="md:hidden relative group" id="services-carousel">
+            <!-- Main Track -->
+            <div class="overflow-hidden rounded-lg border border-gray-700 bg-primary-light">
+                <div id="carousel-track" class="flex transition-transform duration-500 ease-out h-[420px]">
+                    {services.map((service, index) => (
+                        <div class="w-full flex-shrink-0 relative h-full p-8 flex flex-col justify-center">
+                            
+                            <!-- Same Background Logic (Always visible slightly on mobile for effect?) -->
+                            <!-- Let's keep it simple: Dark BG, Image low opacity always visible or just color -->
+                            <div class="absolute inset-0 z-0">
+                                <img 
+                                    src={service.image} 
+                                    alt={service.title} 
+                                    class="w-full h-full object-cover opacity-40" 
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-b from-primary-light/90 via-primary-light/70 to-primary-light/90"></div>
+                            </div>
+    
+                            <!-- Content -->
+                            <div class="relative z-10 flex flex-col items-center text-center h-full justify-center">
+                                <div class="w-16 h-16 bg-primary border border-gray-600 rounded-xl flex items-center justify-center text-accent mb-6 shadow-lg">
+                                    <service.icon className="w-8 h-8" />
+                                </div>
+                                <h3 class="text-2xl font-bold text-white mb-3">{service.title}</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed mb-8 max-w-xs mx-auto">
+                                    {service.desc}
+                                </p>
+                                <a href="/services" class="inline-flex items-center text-accent font-bold uppercase tracking-wide hover:text-white transition bg-primary/50 px-6 py-3 rounded-full border border-gray-600">
+                                    Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Controls & Dots Container -->
+            <div class="flex items-center justify-between mt-4 px-4">
+                
+                <!-- Prev Button -->
+                <button id="prev-slide" class="bg-gray-800 text-white p-2 rounded-full border border-gray-600 hover:bg-accent hover:text-primary transition" aria-label="Previous">
+                    <ChevronLeft className="w-5 h-5"/>
+                </button>
+
+                <!-- Dots -->
+                <div class="flex gap-2">
+                    {services.map((_, index) => (
+                        <button 
+                            class={`w-2 h-2 rounded-full transition-all duration-300 carousel-dot ${index === 0 ? 'bg-accent w-6' : 'bg-gray-600'}`} 
+                            data-index={index}
+                            aria-label={`Go to slide ${index + 1}`}
+                        ></button>
+                    ))}
+                </div>
+
+                <!-- Next Button -->
+                <button id="next-slide" class="bg-gray-800 text-white p-2 rounded-full border border-gray-600 hover:bg-accent hover:text-primary transition" aria-label="Next">
+                    <ChevronRight className="w-5 h-5"/>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    function setupCarousel() {
+        const track = document.getElementById('carousel-track');
+        const container = document.getElementById('services-carousel'); // Get the container for observer
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        if (!track || !prevBtn || !nextBtn || !container) return;
+
+        let currentIndex = 0;
+        const totalSlides = dots.length;
+        let autoPlayInterval;
+        let isUserInteracted = false; // Flag to stop autoplay on interaction
+
+        function updateCarousel() {
+            // Move track
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.remove('bg-gray-600');
+                    dot.classList.add('bg-accent', 'w-6');
+                } else {
+                    dot.classList.add('bg-gray-600');
+                    dot.classList.remove('bg-accent', 'w-6');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            handleInteraction();
+        }
+
+        function startAutoPlay() {
+            if (isUserInteracted) return; // Don't start if user took control
+            stopAutoPlay();
+            autoPlayInterval = setInterval(nextSlide, 3000); 
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+        }
+
+        function handleInteraction() {
+            isUserInteracted = true;
+            stopAutoPlay();
+        }
+
+        // Listeners
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            handleInteraction();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            handleInteraction();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                goToSlide(index);
+            });
+        });
+
+        // Touch support (Swipe)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoPlay(); // Pause while dragging
+        }, {passive: true});
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            // Note: We don't restart autoplay here if we want to stop on interaction.
+            // But usually swipe is an interaction, so let's count it.
+            handleInteraction();
+        }, {passive: true});
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }
+
+        // Intersection Observer: Start only when visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startAutoPlay();
+                } else {
+                    stopAutoPlay(); // Optional: pause when scrolled out of view to save resources
+                }
+            });
+        }, { threshold: 0.5 }); // Start when 50% visible
+
+        observer.observe(container);
+    }
+
+    // Run on load
+    document.addEventListener('astro:page-load', setupCarousel);
+    setupCarousel();
+</script>

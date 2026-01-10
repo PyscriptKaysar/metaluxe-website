@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { Settings, Hammer, Package, Flame, CheckCircle2, ArrowRight } from 'lucide-react';
+
+// Data Structure for the Categories
+const categories = [
+  {
+    id: "machining",
+    title: "Precision Machining (Turnery)",
+    icon: Settings,
+    desc: "Advanced CNC turning and milling for custom mechanical components. Capable of high-volume batch production for industrial machinery.",
+    items: [
+        "Precision Gears & Sprockets",
+        "Shaft Couplings & Pulleys",
+        "Nylon & Steel Rollers",
+        "Pipe Threading Services",
+        "Custom Machinery Parts"
+    ],
+    // Lathe/CNC closeup (Metal shavings, very industrial)
+    image: "images/category1.jpg"
+  },
+  {
+    id: "fabrication",
+    title: "Structural Steel & Fabrication",
+    icon: Hammer,
+    desc: "Heavy-duty welding and fabrication for construction and infrastructure projects. From architectural gates to structural support beams.",
+    items: [
+        "Steel Gates & Grills",
+        "Structural Sign Boards",
+        "Custom Metal Furniture",
+        "Heavy Steel Structures",
+        "On-site Installation"
+    ],
+    // Welder with mask and sparks (Dark industrial setting)
+    image: "images/category2.png"
+  },
+  {
+    id: "supplies",
+    title: "Industrial Fittings & Supplies",
+    icon: Package,
+    desc: "Manufacturing and supply of essential industrial consumables for the Oil & Gas and Marine sectors.",
+    items: [
+        "Hydraulic & Oilfield Fittings",
+        "O-Rings & Gaskets",
+        "PU & Rubber End Caps",
+        "EPDM Hose Tubes",
+        "Orifice Plates"
+    ],
+    // Pile of raw steel pipes/rods (No houses, no copper plumbing)
+    image: "images/category3.jpg"
+  },
+  {
+    id: "casting",
+    title: "Casting & Foundry Works",
+    icon: Flame,
+    desc: "Specialized metal casting services for complex shapes and heavy-duty components required in harsh environments.",
+    items: [
+        "Custom Metal Casting",
+        "Foundry Works",
+        "Manhole Covers & Frames",
+        "Calibration Scales",
+        "Marine Grade Castings"
+    ],
+    // Molten metal pouring (Orange glow, very distinct)
+    image: "images/category4.png"
+  }
+];
+---
+
+<Layout title="Services">
+	
+	<!-- 1. HERO SECTION -->
+	<section class="relative h-[400px] flex items-center justify-center overflow-hidden">
+		<div class="absolute inset-0 z-0">
+			<img 
+				src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" 
+				alt="Industrial Production" 
+				class="w-full h-full object-cover"
+			/>
+			<div class="absolute inset-0 bg-primary/90 mix-blend-multiply"></div>
+		</div>
+		<div class="container mx-auto px-4 relative z-10 text-center">
+			<h1 class="text-5xl font-bold text-white mb-4 uppercase tracking-wider">Our Services</h1>
+			<p class="text-accent text-lg font-medium tracking-widest uppercase">
+				Comprehensive Engineering Solutions
+			</p>
+		</div>
+	</section>
+
+    <!-- 2. INTRO: BULK CAPACITY NOTE -->
+    <section class="py-16 bg-white text-center">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-primary mb-6">From Custom Prototypes to Bulk Production</h2>
+            <p class="text-gray-600 text-lg leading-relaxed">
+                Whether you need a single custom prototype or a <strong>bulk production</strong>, 
+                Metaluxe has the machinery and workforce to deliver. We specialize in contract manufacturing for 
+                construction firms, oilfields, and government tenders, etc..
+            </p>
+        </div>
+    </section>
+
+	<!-- 3. SERVICES GRID -->
+	<section class="py-20 bg-primary-light border-t border-gray-800">
+		<div class="container mx-auto px-4">
+			
+            <div class="space-y-24">
+                {categories.map((cat, index) => (
+                    <div id={cat.id} class={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
+                        
+                        <!-- Image Side -->
+                        <div class="w-full lg:w-1/2">
+                            <div class="relative group">
+                                <div class="absolute -inset-2 bg-accent/20 rounded-lg transform translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition duration-300"></div>
+                                <img 
+                                    src={cat.image} 
+                                    alt={cat.title} 
+                                    class="relative rounded-lg shadow-2xl w-full h-80 object-cover border border-gray-700 md:grayscale md:group-hover:grayscale-0 transition duration-500"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Content Side -->
+                        <div class="w-full lg:w-1/2">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 bg-primary rounded border border-gray-700 flex items-center justify-center text-accent">
+                                    <cat.icon className="w-6 h-6" />
+                                </div>
+                                <span class="text-accent font-bold uppercase tracking-widest text-sm">Service Category 0{index + 1}</span>
+                            </div>
+                            
+                            <h2 class="text-3xl font-bold text-white mb-6">{cat.title}</h2>
+                            <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                                {cat.desc}
+                            </p>
+
+                            <!-- Item List -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                {cat.items.map((item) => (
+                                    <div class="flex items-center text-gray-300">
+                                        <CheckCircle2 className="w-5 h-5 text-accent mr-3 shrink-0" />
+                                        <span class="font-light">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            <!-- Additional Note -->
+                            <p class="text-gray-500 text-sm italic mb-8">+ Many other custom solutions available upon request.</p>
+
+                            <!-- Link to Gallery -->
+                            <a href="/gallery" class="inline-flex items-center text-accent font-bold uppercase tracking-wide hover:text-white transition group">
+                                View Gallery 
+                                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                        </div>
+
+                    </div>
+                ))}
+            </div>
+
+		</div>
+	</section>
+
+    <!-- Reuse the CTA from Homepage -->
+    <CtaSection />
+
+</Layout>

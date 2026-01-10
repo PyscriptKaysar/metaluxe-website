@@ -1,0 +1,224 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-react';
+---
+
+<Layout title="تواصل معنا" lang="ar">
+	
+	<!-- 1. HERO -->
+	<section class="bg-primary pt-32 pb-12 text-center border-b border-gray-800">
+		<div class="container mx-auto px-4">
+			<h1 class="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wider">
+				تواصل <span class="text-accent">معنا</span>
+			</h1>
+			<p class="text-gray-400 max-w-2xl mx-auto">
+				لديك استفسار أو متطلبات؟ اطلب عرض سعر أو قم بزيارة ورشتنا في مصفح.
+			</p>
+		</div>
+	</section>
+
+	<!-- 2. CONTACT INFO CARDS -->
+	<section class="py-16 bg-primary-light">
+		<div class="container mx-auto px-4">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-24">
+				
+				<!-- Phone -->
+				<div class="bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-xl text-center group hover:border-accent transition">
+					<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition">
+						<Phone className="w-8 h-8" />
+					</div>
+					<h3 class="text-white font-bold text-xl mb-4">اتصل بنا</h3>
+					<div class="space-y-2" dir="ltr">
+						<a href="tel:+97126228826" class="block text-gray-400 hover:text-white transition">+971 2 622 88 26 (Office)</a>
+						<a href="tel:+971504135810" class="block text-gray-400 hover:text-white transition">+971 50 413 5810 (Mobile)</a>
+					</div>
+				</div>
+
+				<!-- Email -->
+				<div class="bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-xl text-center group hover:border-accent transition">
+					<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition">
+						<Mail className="w-8 h-8" />
+					</div>
+					<h3 class="text-white font-bold text-xl mb-4">راسلنا</h3>
+					<div class="space-y-2">
+						<a href="mailto:services@metaluxeuae.com" class="block text-gray-400 hover:text-white transition">services@metaluxeuae.com</a>
+						<a href="mailto:binshaheng@gmail.com" class="block text-gray-400 hover:text-white transition">binshaheng@gmail.com</a>
+					</div>
+				</div>
+
+				<!-- Visit -->
+				<div class="bg-gray-800 p-8 rounded-lg border border-gray-700 shadow-xl text-center group hover:border-accent transition">
+					<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition">
+						<MapPin className="w-8 h-8" />
+					</div>
+					<h3 class="text-white font-bold text-xl mb-4">قم بزيارتنا</h3>
+					<p class="text-gray-400">
+						ص.ب 33646،<br/>
+						منطقة مصفح الصناعية،<br/>
+						أبوظبي، الإمارات
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- 3. FORM & MAP -->
+	<section class="py-20 bg-primary border-t border-gray-800">
+		<div class="container mx-auto px-4">
+			<div class="flex flex-col lg:flex-row gap-12">
+				
+				<!-- Left: The Form -->
+				<div class="lg:w-1/2">
+					<h2 class="text-3xl font-bold text-white mb-2">اطلب عرض سعر</h2>
+					<p class="text-gray-400 mb-8">املأ النموذج أدناه وسيقوم فريقنا الهندسي بالرد عليك خلال 24 ساعة.</p>
+
+                    <!-- Success/Error Message Container -->
+                    <div id="form-message" class="hidden mb-6 p-4 rounded text-sm font-bold"></div>
+
+					<form id="contact-form" class="space-y-6">
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label class="block text-gray-500 text-sm font-bold mb-2">الاسم *</label>
+								<input type="text" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" />
+							</div>
+							<div>
+								<label class="block text-gray-500 text-sm font-bold mb-2">رقم الهاتف</label>
+								<input type="tel" name="phone" class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" placeholder="+971 50..." dir="ltr" />
+							</div>
+						</div>
+
+						<div>
+							<label class="block text-gray-500 text-sm font-bold mb-2">البريد الإلكتروني *</label>
+							<input type="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" dir="ltr" />
+						</div>
+
+						<div>
+							<label class="block text-gray-500 text-sm font-bold mb-2">الرسالة / التعليق *</label>
+							<textarea name="message" required rows="4" class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" placeholder="كيف يمكننا مساعدتك؟"></textarea>
+						</div>
+
+						<button type="submit" id="submit-btn" class="w-full bg-accent hover:bg-accent-hover text-primary font-bold py-4 rounded flex items-center justify-center gap-2 transition transform hover:scale-[1.02]">
+							<span id="btn-text" class="flex items-center gap-2"><Send className="w-5 h-5" /> إرسال الرسالة</span>
+                            <!-- Loader (Hidden by default) -->
+                            <span id="btn-loader" class="hidden flex items-center justify-center gap-2"><Loader2 className="w-5 h-5 animate-spin" /> جاري الإرسال...</span>
+						</button>
+					</form>
+				</div>
+
+				<!-- Right: Map -->
+				<div class="lg:w-1/2 flex flex-col gap-8">
+					<!-- Map Container with Custom Overlay -->
+					<div class="bg-gray-800 p-2 rounded-lg border border-gray-700 h-[500px] md:h-[400px] relative overflow-hidden group">
+						
+						<!-- 1. The Real Map Iframe (Coordinates for METALUXE) -->
+						<iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0"
+                            allowfullscreen=""
+                            loading="lazy"
+                            src="https://maps.google.com/maps?q=24.3766441,54.4919773&hl=en&z=15&amp;output=embed"
+							class="grayscale-0 md:grayscale md:group-hover:grayscale-0 transition duration-700 relative z-0 h-full w-full pointer-events-auto"
+						>
+						</iframe>
+
+						<!-- 2. Custom Floating Card -->
+                        <!-- In RTL: positioned top-right or top-left? Design usually stays same relative to frame, but let's keep it nice looking. 
+                             Usually maps controls are on right. I'll put this floating card on the RIGHT in RTL (so 'right-4' instead of 'left-4') -->
+						<div class="absolute z-20 pointer-events-auto bg-white border-gray-200 transition-transform duration-300 md:group-hover:-translate-y-1 text-right text-gray-900 top-4 right-4 w-[230px] border rounded shadow-lg p-4 md:w-[280px] md:p-5">
+							<h3 class="font-bold text-gray-900 text-base mb-1">ورشة ميتالوكس</h3>
+							<p class="text-[11px] text-gray-500 font-medium uppercase tracking-wide mb-2">سابقاً بن شاهين</p>
+							
+							<p class="text-xs text-gray-600 mb-4 leading-relaxed">
+								8FX9+3P7<br>
+								مصفح الصناعية (MW4)<br>
+								أبوظبي، الإمارات
+							</p>
+							
+							<div class="flex items-center gap-3">
+								<a href="https://maps.app.goo.gl/7qUbS6Jhj8Qm3pBNA" target="_blank" rel="noopener noreferrer" class="text-blue-600 text-xs font-bold uppercase tracking-wide hover:underline">
+									عرض خريطة أكبر
+								</a>
+								<a href="https://maps.app.goo.gl/7qUbS6Jhj8Qm3pBNA" target="_blank" rel="noopener noreferrer" class="mr-auto w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white hover:bg-blue-700 transition">
+									<Navigation className="w-4 h-4 fill-current transform scale-x-[-1]" /> <!-- Flipped nav icon for fun, or keep standard -->
+								</a>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+						<div class="flex items-center gap-4 mb-6">
+							<Clock className="w-8 h-8 text-accent" />
+							<h3 class="text-white font-bold text-xl">ساعات العمل</h3>
+						</div>
+						<ul class="space-y-4 text-gray-400">
+							<li class="flex justify-between border-b border-gray-700 pb-2">
+								<span>الاثنين - السبت</span>
+								<span class="text-white font-medium" dir="ltr">8:00 AM - 8:00 PM</span>
+							</li>
+							<li class="flex justify-between text-accent">
+								<span>الأحد</span>
+								<span>مغلق</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</Layout>
+
+<!-- CLIENT-SIDE LOGIC -->
+<script>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnLoader = document.getElementById('btn-loader');
+    const messageDiv = document.getElementById('form-message');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Stop page reload
+
+        // 1. Show Loading State
+        submitBtn.disabled = true;
+        btnText.classList.add('hidden');
+        btnLoader.classList.remove('hidden');
+        messageDiv.classList.add('hidden');
+
+        // 2. Gather Data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            // ==========================================
+            // YOUR BACKEND LOGIC GOES HERE
+            // Example: await fetch('/api/contact', { ... })
+            // ==========================================
+            
+            // Simulating a delay for now (Remove this later)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // 3. Success State
+            messageDiv.textContent = "تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.";
+            messageDiv.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
+            messageDiv.classList.add('bg-green-500/20', 'text-green-400');
+            form.reset();
+
+        } catch (error) {
+            // 4. Error State
+            messageDiv.textContent = "حدث خطأ ما. يرجى المحاولة مرة أخرى.";
+            messageDiv.classList.remove('hidden', 'bg-green-500/20', 'text-green-400');
+            messageDiv.classList.add('bg-red-500/20', 'text-red-400');
+        } finally {
+            // 5. Reset Button
+            submitBtn.disabled = false;
+            btnText.classList.remove('hidden');
+            btnLoader.classList.add('hidden');
+        }
+    });
+</script>

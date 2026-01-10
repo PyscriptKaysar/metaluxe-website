@@ -1,0 +1,259 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaSection from '../../components/CtaSectionAR.astro';
+import { Building2, Calendar, MapPin, X, CheckCircle2, Package } from 'lucide-react';
+
+const caseStudies = [
+  {
+    id: "project-1",
+    client: "هيئة حكومية",
+    title: "البنية التحتية واللوحات الإرشادية للحدائق العامة",
+    location: "أبوظبي، الإمارات",
+    year: "2023",
+    desc: "تصنيع وتركيب كامل للعناصر المعمارية الفولاذية، بما في ذلك اللوحات الإرشادية المخصصة، والمقاعد، وأعمدة الإنارة لحديقة عامة.",
+    mainImage: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1000",
+    tags: ["بنية تحتية", "أعمال معدنية معمارية"],
+    stats: {
+        quantity: "أكثر من 50 تركيب",
+        duration: "3 أشهر",
+        manpower: "فريق من 15 شخص"
+    },
+    scope: [
+        "تصنيع لوحات إرشادية هيكلية",
+        "مقاعد فولاذية مخصصة",
+        "طلاء بودرة مجلفن",
+        "أعمال الأساسات المدنية"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1000",
+        "https://images.unsplash.com/photo-1621259654101-72da9a184136?auto=format&fit=crop&q=80"
+    ]
+  },
+  {
+    id: "project-2",
+    client: "مقاول قطاع الطاقة",
+    title: "أدوات حفر الآبار الدقيقة",
+    location: "منطقة مصفح الصناعية",
+    year: "2023",
+    desc: "خراطة CNC عالية الدقة لمكونات الحفر المتخصصة والاغلفة المصنعة من الصلب السبائكي عالي الجودة.",
+    mainImage: "https://images.unsplash.com/photo-1581093458791-9f302e6d8a6b?auto=format&fit=crop&q=80&w=1000",
+    tags: ["ناقط ونفط", "خراطة CNC"],
+    stats: {
+        quantity: "200 قطعة",
+        duration: "4 أسابيع",
+        tolerance: "+/- 0.01 مم"
+    },
+    scope: [
+        "عمليات الخراطة والتفريز CNC",
+        "تنسيق المعالجة الحرارية",
+        "قياس اللوالب بدقة",
+        "تقارير تتبع المواد"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1622340274296-6e5454b5df56?auto=format&fit=crop&q=80"
+    ]
+  },
+  {
+    id: "project-3",
+    client: "ديسكون الهندسية",
+    title: "خزانات التخزين الصناعية",
+    location: "منطقة مصفح الصناعية",
+    year: "2021",
+    desc: "تصميم وتصنيع 4 خزانات تخزين مخصصة من الفولاذ المقاوم للصدأ لمصنع معالجة كيميائية.",
+    mainImage: "https://images.unsplash.com/photo-1535068484675-c990924d62fb?auto=format&fit=crop&q=80&w=1000",
+    tags: ["تصنيع", "لحام"],
+    stats: {
+        quantity: "4 وحدات (20,000 لتر)",
+        duration: "8 أسابيع",
+        material: "ستانلس ستيل 316L"
+    },
+    scope: [
+        "درفلة وتشكيل ألواح الهيكل",
+        "لحام كامل الاختراق",
+        "تلميع داخلي (درجة غذائية)",
+        "تركيب الخلاطات"
+    ],
+    gallery: [
+        "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?auto=format&fit=crop&q=80"
+    ]
+  }
+];
+---
+
+<Layout title="المشاريع ودراسات الحالة" lang="ar">
+	
+	<!-- HERO -->
+	<section class="bg-primary pt-32 pb-12 text-center border-b border-gray-800">
+		<div class="container mx-auto px-4">
+			<h1 class="text-4xl md:text-5xl font-bold text-white mb-2 uppercase tracking-wider font-arabic">
+				أهم <span class="text-accent">المشاريع</span>
+			</h1>
+			<p class="text-gray-400 max-w-2xl mx-auto mt-2 font-arabic">
+				نقدم التميز الهندسي للشركات الرائدة في الإمارات.
+			</p>
+		</div>
+	</section>
+
+	<!-- CASE STUDIES GRID -->
+	<section class="py-20 bg-primary min-h-screen">
+		<div class="container mx-auto px-4">
+			<div class="space-y-12">
+				{caseStudies.map((study) => (
+					<div class="bg-gray-800 rounded-lg overflow-hidden flex flex-col md:flex-row border border-gray-700 hover:border-accent transition group">
+						<!-- Main Image -->
+						<div class="h-64 md:h-auto md:w-2/5 overflow-hidden relative">
+                            <div class="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition z-10"></div>
+							<img src={study.mainImage} alt={study.title} class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" />
+						</div>
+						
+                        <!-- Content Preview -->
+						<div class="md:w-3/5 p-8 flex flex-col justify-center text-right">
+							<div class="flex flex-wrap gap-2 mb-4 justify-end md:justify-start">
+								{study.tags.map(tag => (
+									<span class="text-xs font-bold text-primary bg-accent px-2 py-1 rounded uppercase tracking-wide">{tag}</span>
+								))}
+							</div>
+							<h3 class="text-2xl font-bold text-white mb-2">{study.title}</h3>
+							<div class="flex flex-wrap gap-6 text-sm text-gray-400 mb-6 justify-end md:justify-start">
+								<span class="flex items-center gap-2"><Building2 className="w-4 h-4 text-accent"/> {study.client}</span>
+								<span class="flex items-center gap-2"><MapPin className="w-4 h-4 text-accent"/> {study.location}</span>
+								<span class="flex items-center gap-2"><Calendar className="w-4 h-4 text-accent"/> {study.year}</span>
+							</div>
+							<p class="text-gray-300 leading-relaxed mb-8">
+								{study.desc}
+							</p>
+                            
+                            <!-- Button to Open Modal -->
+                            <button 
+                                class="open-modal-btn w-fit px-6 py-3 border border-white text-white font-bold text-sm uppercase rounded hover:bg-white hover:text-primary transition self-end md:self-start"
+                                data-id={study.id}
+                            >
+                                عرض تفاصيل المشروع
+                            </button>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+    <!-- HIDDEN MODAL COMPONENT -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" id="modal-backdrop"></div>
+        
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <!-- INCREASED WIDTH HERE: max-w-6xl -->
+            <div class="bg-gray-900 w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-lg border border-gray-700 shadow-2xl relative animate-fade-in-up" dir="rtl">
+                
+                <button id="close-modal" class="sticky top-4 left-4 float-left text-gray-400 hover:text-white z-20 bg-black/50 p-2 rounded-full">
+                    <X className="w-6 h-6" />
+                </button> 
+
+                <div class="p-8 md:p-12 text-right" id="modal-content">
+                    <!-- Content injected via JS -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <CtaSection />
+
+</Layout>
+
+<script define:vars={{ caseStudies }}>
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const contentDiv = document.getElementById('modal-content');
+    const buttons = document.querySelectorAll('.open-modal-btn');
+
+    // Using Lucide icons svg strings for injection since we are in raw JS inside script tag
+    // Or we leave text only. Simplest approach for i18n injection is text.
+    
+    function generateModalHTML(project) {
+        return `
+            <div class="flex flex-col gap-8">
+                <div>
+                    <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">${project.client}</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">${project.title}</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg max-w-3xl">${project.desc}</p>
+                </div>
+
+                <!-- Key Stats Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 bg-gray-800 p-8 rounded-lg border border-gray-700">
+                    <div class="col-span-2 lg:col-span-1">
+                        <span class="block text-gray-500 text-sm uppercase mb-1">الكمية / النطاق</span>
+                        <span class="block text-white font-bold text-xl md:text-2xl">${project.stats.quantity}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 text-sm uppercase mb-1">المدة الزمنية</span>
+                        <span class="block text-white font-bold text-xl md:text-2xl">${project.stats.duration}</span>
+                    </div>
+                    <div>
+                        <span class="block text-gray-500 text-sm uppercase mb-1">المواصفات الرئيسية</span>
+                        <span class="block text-white font-bold text-xl md:text-2xl">${project.stats.manpower || project.stats.pressure || project.stats.material}</span>
+                    </div>
+                </div>
+
+                <!-- Scope & Gallery Split -->
+                <div class="flex flex-col lg:flex-row gap-12">
+                    
+                    <!-- Scope List -->
+                    <div class="lg:w-1/3 order-2 lg:order-1">
+                        <h4 class="text-xl font-bold text-white mb-6 border-b border-gray-700 pb-2">نطاق العمل</h4>
+                        <ul class="space-y-4">
+                            ${project.scope.map(item => `
+                                <li class="flex items-start gap-3">
+                                    <span class="text-accent mt-1">✓</span>
+                                    <span class="text-gray-300">${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <!-- Gallery Images -->
+                     <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4 order-1 lg:order-2">
+                        ${project.gallery.map(img => `
+                            <div class="rounded-lg overflow-hidden border border-gray-700 h-64">
+                                <img src="${img}" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="Project detail">
+                            </div>
+                        `).join('')}
+                    </div>
+
+                </div>
+            </div>
+        `;
+    }
+
+    // Event Listeners
+    function openModal(id) {
+        const project = caseStudies.find(p => p.id === id);
+        if (!project) return;
+        
+        contentDiv.innerHTML = generateModalHTML(project);
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+        contentDiv.innerHTML = '';
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            openModal(id);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+</script>

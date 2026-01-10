@@ -1,0 +1,110 @@
+---
+import { Hammer, Settings, Anchor, Flame, Cpu, HardHat, ArrowLeft } from 'lucide-react';
+
+const services = [
+  {
+    title: "تصنيع الهياكل الفولاذية",
+    desc: "حلول تصنيع متنوعة تتراوح من الهياكل الصناعية الثقيلة إلى الأعمال المعدنية المعمارية المخصصة.",
+    icon: Hammer,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/steelfabrication.png"
+  },
+  {
+    title: "الخراطة الدقيقة",
+    desc: "أعمال خراطة وطحن متقدمة للقطع المخصصة، والأعمدة، والتروس.",
+    icon: Settings,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/milling.jpg"
+  },
+  {
+    title: "الخدمات البحرية والنفطية",
+    desc: "تصنيع متخصص للسفن البحرية، وأنظمة الري، ومنصات الحفر البحرية.",
+    icon: Anchor,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/lathe.jpg"
+  },
+  {
+    title: "السباكة والمسبك",
+    desc: "خدمات سباكة معادن عالية الجودة للمكونات المخصصة وقطع غيار الآلات.",
+    icon: Flame,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/casting.jpg"
+  },
+  {
+    title: "إنتاج CNC",
+    desc: "إنتاج يتم التحكم فيه بالكمبيوتر للتصنيع الدفعي عالي الدقة.",
+    icon: Cpu,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "/images/CNC.jpg"
+  },
+  {
+    title: "التركيب والإنشاء",
+    desc: "تركيب الهيكل الفولاذي ومعدات المعالجة في الموقع في جميع أنحاء الإمارات.",
+    icon: HardHat,
+    // UPDATE THIS: Replace with your real photo URL
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80"
+  }
+];
+---
+
+<section class="py-20 bg-primary relative">
+    <div class="container mx-auto px-4">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-accent font-bold tracking-widest uppercase text-sm">ماذا نفعل</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mt-2 mb-4">قدراتنا الأساسية</h2>
+            <p class="text-gray-400">
+                من المواد الخام إلى المنتج النهائي، نقدم حلولاً هندسية شاملة للصناعات الأكثر تطلباً في الإمارات.
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+                <div class="group p-8 bg-primary-light rounded-lg border border-gray-700 hover:border-accent transition duration-500 relative overflow-hidden h-full">
+                    
+                    <!-- BACKGROUND IMAGE LAYER (Hidden by default, visible on hover) -->
+                    <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition duration-500 ease-out">
+                         
+                        <!-- The Image Itself -->
+                        <img 
+                            src={service.image} 
+                            alt={service.title} 
+                            class="w-full h-full object-cover opacity-30" 
+                        />
+                        
+                        <!-- Dark Overlay (so text stays readable) -->
+                        <div class="absolute inset-0 bg-primary/90 group-hover:bg-primary/60 transition-colors duration-500"></div>
+                    </div>
+
+                    <!-- CONTENT LAYER (z-10 puts this ON TOP of the image) -->
+                    <div class="relative z-10 flex flex-col h-full text-right" dir="rtl">
+                        
+                        <!-- Icon Wrapper -->
+                        <div class="w-14 h-14 bg-primary border border-gray-600 rounded-lg flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:bg-accent group-hover:text-primary transition duration-300 shadow-xl ml-auto mr-0">
+                            <service.icon className="w-8 h-8" />
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold text-white mb-3 text-shadow">{service.title}</h3>
+                        
+                        <!-- Desription -->
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6 group-hover:text-gray-100 transition-colors">
+                            {service.desc}
+                        </p>
+
+                        <!-- Link (pushed to bottom) -->
+                        <div class="mt-auto">
+                            <a href="/ar/services" class="inline-flex items-center text-accent text-sm font-bold uppercase tracking-wide hover:text-white transition gap-2">
+                                اعرف المزيد <ArrowLeft className="w-4 h-4" />
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+
+    </div>
+</section>

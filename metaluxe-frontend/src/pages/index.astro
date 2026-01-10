@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Clients from '../components/Clients.astro';
+import Services from '../components/Services.astro';
+import FeaturedProjects from '../components/FeaturedProjects.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { ArrowRight } from 'lucide-react';
+---
+
+<Layout title="Home">
+	
+	<!-- HERO SECTION -->
+	<section class="relative h-[600px] flex items-center justify-center overflow-hidden">
+		
+		<!-- Background Image -->
+		<div class="absolute inset-0 z-0">
+			<img 
+				src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop" 
+				alt="Industrial Steel Fabrication Workshop" 
+				class="w-full h-full object-cover"
+			/>
+			<div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+			<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent"></div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="container mx-auto px-4 relative z-10 text-center">
+			
+			<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1 rounded-full mb-6">
+				<span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+				<span class="text-gray-200 text-sm font-medium tracking-wide">ESTABLISHED 1992</span>
+			</div>
+
+			<!-- TWEAK: More specific headline -->
+			<h1 class="text-3xl sm:text-4xl md:text-7xl font-bold text-white mb-6 leading-tight">
+				PRECISION <span class="text-accent">MACHINING</span> <br/>
+				& CUSTOM FABRICATION
+			</h1>
+
+			<!-- TWEAK: Description focuses on key services -->
+			<p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
+				A comprehensive engineering workshop delivering versatile metalwork solutions. 
+				From heavy industrial turning and milling to custom residential fit-outs and government infrastructure projects.
+			</p>
+
+			<div class="flex flex-col md:flex-row gap-4 justify-center">
+				<a href="/contact" class="bg-accent hover:bg-accent-hover text-primary font-bold py-4 px-8 rounded flex items-center justify-center gap-2 transition transform hover:scale-105">
+					REQUEST A QUOTE
+					<ArrowRight className="w-5 h-5" />
+				</a>
+				<a href="/services" class="bg-transparent border-2 border-white/30 hover:bg-white hover:text-primary text-white font-bold py-4 px-8 rounded transition">
+					EXPLORE SERVICES
+				</a>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- TRUST BAR (Stats) -->
+	<section class="bg-primary border-b border-gray-800 py-8">
+		<div class="container mx-auto px-4">
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-800">
+				
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">30+</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">Years Experience</span>
+				</div>
+
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">ADNOC</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">ICV Certified</span>
+				</div>
+
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">100%</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">Quality Focus</span>
+				</div>
+
+				<!-- TWEAK: Changed "24/7 Support" to "On-Time Delivery" -->
+				<div class="flex flex-col items-center">
+					<span class="text-3xl font-bold text-white font-heading">On-Time</span>
+					<span class="text-gray-500 text-sm mt-1 uppercase tracking-wider">Delivery</span>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+    <!-- TRUSTED CLIENTS STRIP -->
+    <Clients />
+
+	<Services />
+	<FeaturedProjects />
+    <CtaSection />
+
+
+</Layout>
