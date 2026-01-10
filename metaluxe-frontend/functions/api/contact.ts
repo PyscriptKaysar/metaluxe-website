@@ -7,8 +7,8 @@ type Env = {
 type ContactPayload = {
   name?: string;
   phone?: string;
+  email?: string;
   company?: string;
-  service?: string;
   message?: string;
 };
 
@@ -53,23 +53,42 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
     );
   }
 
-  const { name, phone, company = "", service = "", message } = payload;
+  const { name, phone = "", email, company = "", message } = payload;
 
-  if (!isNonEmptyString(name, 100) || !isNonEmptyString(phone, 50) || !isNonEmptyString(message, 2000)) {
+  if (!isNonEmptyString(name, 100) || !isNonEmptyString(email, 200) || !isNonEmptyString(message, 2000)) {
     return new Response(
       JSON.stringify({ ok: false, error: "Missing or invalid fields." }),
       { status: 400, headers: { "content-type": "application/json" } }
     );
   }
 
+  const rows = [
+    ["Name", name!],
+    ["Email", email!],
+    phone.trim() ? ["Phone", phone] : null,
+    company.trim() ? ["Company", company] : null,
+  ].filter(Boolean) as Array<[string, string]>;
+
   const html = `
-    <h2>New Contact Form Submission</h2>
-    <p><strong>Name:</strong> ${escapeHtml(name!)}</p>
-    <p><strong>Phone:</strong> ${escapeHtml(phone!)}</p>
-    <p><strong>Company:</strong> ${escapeHtml(company || "-")}</p>
-    <p><strong>Service:</strong> ${escapeHtml(service || "-")}</p>
-    <p><strong>Message:</strong></p>
-    <p>${escapeHtml(message!).replace(/\n/g, "<br/>")}</p>
+    <div style="font-family: Arial, sans-serif; color: #111827;">
+      <h2 style="margin: 0 0 12px;">New Contact Form Submission</h2>
+      <table style="border-collapse: collapse; width: 100%; margin-bottom: 16px;">
+        ${rows
+          .map(
+            ([label, value]) => `
+          <tr>
+            <td style="padding: 6px 0; width: 120px; color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: .04em;">${label}</td>
+            <td style="padding: 6px 0; font-size: 14px; color: #111827;">${escapeHtml(value)}</td>
+          </tr>
+        `
+          )
+          .join("")}
+      </table>
+      <div style="border-top: 1px solid #E5E7EB; padding-top: 12px;">
+        <div style="color: #6B7280; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px;">Message</div>
+        <div style="font-size: 14px; line-height: 1.5;">${escapeHtml(message!).replace(/\n/g, "<br/>")}</div>
+      </div>
+    </div>
   `;
 
   const resendResponse = await fetch("https://api.resend.com/emails", {
@@ -82,6 +101,7 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       from: env.RESEND_FROM,
       to: [env.RESEND_TO],
       subject: "New Metaluxe website inquiry",
+      reply_to: email,
       html,
     }),
   });
