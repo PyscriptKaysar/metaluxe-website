@@ -179,7 +179,16 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
     const btnLoader = document.getElementById('btn-loader');
     const messageDiv = document.getElementById('form-message');
 
-    form.addEventListener('submit', async (e) => {
+    if (
+        !(form instanceof HTMLFormElement) ||
+        !(submitBtn instanceof HTMLButtonElement) ||
+        !(btnText instanceof HTMLElement) ||
+        !(btnLoader instanceof HTMLElement) ||
+        !(messageDiv instanceof HTMLElement)
+    ) {
+        console.warn('Contact form elements not found.');
+    } else {
+        form.addEventListener('submit', async (e) => {
         e.preventDefault(); // Stop page reload
 
         // 1. Show Loading State
@@ -212,7 +221,8 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
 
         } catch (error) {
             // 4. Error State
-            messageDiv.textContent = error?.message || "Something went wrong. Please try again.";
+            const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+            messageDiv.textContent = errorMessage;
             messageDiv.classList.remove('hidden', 'bg-green-500/20', 'text-green-400');
             messageDiv.classList.add('bg-red-500/20', 'text-red-400');
         } finally {
@@ -221,5 +231,6 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
             btnText.classList.remove('hidden');
             btnLoader.classList.add('hidden');
         }
-    });
+        });
+    }
 </script>

@@ -170,13 +170,21 @@ const services = [
         const container = document.getElementById('services-carousel'); // Get the container for observer
         const prevBtn = document.getElementById('prev-slide');
         const nextBtn = document.getElementById('next-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
+        const dots = Array.from(document.querySelectorAll<HTMLButtonElement>('.carousel-dot'));
         
-        if (!track || !prevBtn || !nextBtn || !container) return;
+        if (
+            !(track instanceof HTMLElement) ||
+            !(container instanceof HTMLElement) ||
+            !(prevBtn instanceof HTMLButtonElement) ||
+            !(nextBtn instanceof HTMLButtonElement) ||
+            dots.length === 0
+        ) {
+            return;
+        }
 
         let currentIndex = 0;
         const totalSlides = dots.length;
-        let autoPlayInterval;
+        let autoPlayInterval: ReturnType<typeof setInterval> | undefined;
         let isUserInteracted = false; // Flag to stop autoplay on interaction
 
         function updateCarousel() {
@@ -205,7 +213,7 @@ const services = [
             updateCarousel();
         }
 
-        function goToSlide(index) {
+        function goToSlide(index: number) {
             currentIndex = index;
             updateCarousel();
             handleInteraction();
@@ -218,7 +226,7 @@ const services = [
         }
 
         function stopAutoPlay() {
-            if (autoPlayInterval) clearInterval(autoPlayInterval);
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
         }
 
         function handleInteraction() {
@@ -237,9 +245,10 @@ const services = [
             handleInteraction();
         });
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+        dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+                const index = Number(dot.dataset.index);
+                if (Number.isNaN(index)) return;
                 goToSlide(index);
             });
         });

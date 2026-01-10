@@ -181,7 +181,16 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
     const btnLoader = document.getElementById('btn-loader');
     const messageDiv = document.getElementById('form-message');
 
-    form.addEventListener('submit', async (e) => {
+    if (
+        !(form instanceof HTMLFormElement) ||
+        !(submitBtn instanceof HTMLButtonElement) ||
+        !(btnText instanceof HTMLElement) ||
+        !(btnLoader instanceof HTMLElement) ||
+        !(messageDiv instanceof HTMLElement)
+    ) {
+        console.warn('Contact form elements not found.');
+    } else {
+        form.addEventListener('submit', async (e) => {
         e.preventDefault(); // Stop page reload
 
         // 1. Show Loading State
@@ -195,23 +204,27 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
         const data = Object.fromEntries(formData.entries());
 
         try {
-            // ==========================================
-            // YOUR BACKEND LOGIC GOES HERE
-            // Example: await fetch('/api/contact', { ... })
-            // ==========================================
-            
-            // Simulating a delay for now (Remove this later)
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Email send failed.');
+            }
 
             // 3. Success State
-            messageDiv.textContent = "تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.";
+            messageDiv.textContent = "Message sent successfully! We will contact you soon.";
             messageDiv.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
             messageDiv.classList.add('bg-green-500/20', 'text-green-400');
             form.reset();
 
         } catch (error) {
             // 4. Error State
-            messageDiv.textContent = "حدث خطأ ما. يرجى المحاولة مرة أخرى.";
+            const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+            messageDiv.textContent = errorMessage;
             messageDiv.classList.remove('hidden', 'bg-green-500/20', 'text-green-400');
             messageDiv.classList.add('bg-red-500/20', 'text-red-400');
         } finally {
@@ -220,5 +233,6 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
             btnText.classList.remove('hidden');
             btnLoader.classList.add('hidden');
         }
-    });
+        });
+    }
 </script>

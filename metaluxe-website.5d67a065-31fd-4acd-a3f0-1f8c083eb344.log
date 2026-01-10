@@ -1,0 +1,172 @@
+2026-01-10T12:27:27.332808Z	Cloning repository...
+2026-01-10T12:27:29.159203Z	From https://github.com/Kaysargamer/metaluxe-website
+2026-01-10T12:27:29.160002Z	 * branch            9f086e632b7722646d50b4bcbdc82ffdd2fc335d -> FETCH_HEAD
+2026-01-10T12:27:29.160115Z	
+2026-01-10T12:27:29.27851Z	HEAD is now at 9f086e6 Initial commit
+2026-01-10T12:27:29.279015Z	
+2026-01-10T12:27:29.349825Z	
+2026-01-10T12:27:29.350314Z	Using v2 root directory strategy
+2026-01-10T12:27:29.37071Z	Success: Finished cloning repository files
+2026-01-10T12:27:31.023518Z	Checking for configuration in a Wrangler configuration file (BETA)
+2026-01-10T12:27:31.024042Z	
+2026-01-10T12:27:32.130721Z	No wrangler.toml file found. Continuing.
+2026-01-10T12:27:32.194535Z	Detected the following tools from environment: npm@10.9.2, nodejs@22.16.0
+2026-01-10T12:27:32.195062Z	Installing project dependencies: npm clean-install --progress=false
+2026-01-10T12:27:38.860554Z	
+2026-01-10T12:27:38.860812Z	added 472 packages, and audited 473 packages in 6s
+2026-01-10T12:27:38.860966Z	
+2026-01-10T12:27:38.861087Z	176 packages are looking for funding
+2026-01-10T12:27:38.86119Z	  run `npm fund` for details
+2026-01-10T12:27:38.862033Z	
+2026-01-10T12:27:38.8622Z	found 0 vulnerabilities
+2026-01-10T12:27:38.888425Z	Executing user command: npm run build
+2026-01-10T12:27:39.251714Z	
+2026-01-10T12:27:39.252289Z	> metaluxe-frontend@0.0.1 build
+2026-01-10T12:27:39.252519Z	> astro check && astro build
+2026-01-10T12:27:39.252603Z	
+2026-01-10T12:27:41.25959Z	[2m12:27:41[22m [34m[content][39m Syncing content
+2026-01-10T12:27:41.263994Z	[2m12:27:41[22m [34m[content][39m Synced content
+2026-01-10T12:27:41.264793Z	[2m12:27:41[22m [34m[types][39m Generated [2m137ms[22m
+2026-01-10T12:27:41.270732Z	[2m12:27:41[22m [34m[check][39m Getting diagnostics for Astro files in /opt/buildhome/repo/metaluxe-frontend...
+2026-01-10T12:27:44.382486Z	[96msrc/components/Footer.astro[0m:[93m81[0m:[93m135[0m - [93mwarning[0m[90m ts(6385): [0m'Instagram' is deprecated.
+2026-01-10T12:27:44.38272Z	
+2026-01-10T12:27:44.382802Z	[7m81[0m                     <a href="#" class="p-2 bg-gray-800 rounded hover:bg-accent hover:text-primary transition" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
+2026-01-10T12:27:44.382917Z	[7m  [0m [93m                                                                                                                                      ~~~~~~~~~[0m
+2026-01-10T12:27:44.382998Z	[96msrc/components/Footer.astro[0m:[93m80[0m:[93m134[0m - [93mwarning[0m[90m ts(6385): [0m'Facebook' is deprecated.
+2026-01-10T12:27:44.383056Z	
+2026-01-10T12:27:44.383111Z	[7m80[0m                     <a href="#" class="p-2 bg-gray-800 rounded hover:bg-accent hover:text-primary transition" aria-label="Facebook"><Facebook className="w-5 h-5" /></a>
+2026-01-10T12:27:44.383172Z	[7m  [0m [93m                                                                                                                                     ~~~~~~~~[0m
+2026-01-10T12:27:44.383289Z	[96msrc/components/Footer.astro[0m:[93m2[0m:[93m41[0m - [93mwarning[0m[90m ts(6385): [0m'Instagram' is deprecated.
+2026-01-10T12:27:44.383372Z	
+2026-01-10T12:27:44.383429Z	[7m2[0m import { MapPin, Phone, Mail, Facebook, Instagram, ArrowRight } from 'lucide-react';
+2026-01-10T12:27:44.383485Z	[7m [0m [93m                                        ~~~~~~~~~[0m
+2026-01-10T12:27:44.383568Z	[96msrc/components/Footer.astro[0m:[93m2[0m:[93m31[0m - [93mwarning[0m[90m ts(6385): [0m'Facebook' is deprecated.
+2026-01-10T12:27:44.383625Z	
+2026-01-10T12:27:44.3837Z	[7m2[0m import { MapPin, Phone, Mail, Facebook, Instagram, ArrowRight } from 'lucide-react';
+2026-01-10T12:27:44.383764Z	[7m [0m [93m                              ~~~~~~~~[0m
+2026-01-10T12:27:44.383829Z	
+2026-01-10T12:27:44.500818Z	[96msrc/components/FooterAR.astro[0m:[93m80[0m:[93m135[0m - [93mwarning[0m[90m ts(6385): [0m'Instagram' is deprecated.
+2026-01-10T12:27:44.501131Z	
+2026-01-10T12:27:44.501303Z	[7m80[0m                     <a href="#" class="p-2 bg-gray-800 rounded hover:bg-accent hover:text-primary transition" aria-label="Instagram"><Instagram className="w-5 h-5" /></a>
+2026-01-10T12:27:44.501426Z	[7m  [0m [93m                                                                                                                                      ~~~~~~~~~[0m
+2026-01-10T12:27:44.501565Z	[96msrc/components/FooterAR.astro[0m:[93m79[0m:[93m134[0m - [93mwarning[0m[90m ts(6385): [0m'Facebook' is deprecated.
+2026-01-10T12:27:44.501672Z	
+2026-01-10T12:27:44.501786Z	[7m79[0m                     <a href="#" class="p-2 bg-gray-800 rounded hover:bg-accent hover:text-primary transition" aria-label="Facebook"><Facebook className="w-5 h-5" /></a>
+2026-01-10T12:27:44.501897Z	[7m  [0m [93m                                                                                                                                     ~~~~~~~~[0m
+2026-01-10T12:27:44.501999Z	[96msrc/components/FooterAR.astro[0m:[93m2[0m:[93m41[0m - [93mwarning[0m[90m ts(6385): [0m'Instagram' is deprecated.
+2026-01-10T12:27:44.5021Z	
+2026-01-10T12:27:44.50221Z	[7m2[0m import { MapPin, Phone, Mail, Facebook, Instagram, ArrowLeft } from 'lucide-react';
+2026-01-10T12:27:44.502314Z	[7m [0m [93m                                        ~~~~~~~~~[0m
+2026-01-10T12:27:44.502418Z	[96msrc/components/FooterAR.astro[0m:[93m2[0m:[93m31[0m - [93mwarning[0m[90m ts(6385): [0m'Facebook' is deprecated.
+2026-01-10T12:27:44.502522Z	
+2026-01-10T12:27:44.502619Z	[7m2[0m import { MapPin, Phone, Mail, Facebook, Instagram, ArrowLeft } from 'lucide-react';
+2026-01-10T12:27:44.502748Z	[7m [0m [93m                              ~~~~~~~~[0m
+2026-01-10T12:27:44.502822Z	
+2026-01-10T12:27:44.847659Z	[96msrc/components/Services.astro[0m:[93m242[0m:[93m56[0m - [91merror[0m[90m ts(2339): [0mProperty 'getAttribute' does not exist on type 'EventTarget'.
+2026-01-10T12:27:44.848022Z	
+2026-01-10T12:27:44.848189Z	[7m242[0m                 const index = parseInt(e.currentTarget.getAttribute('data-index'));
+2026-01-10T12:27:44.848296Z	[7m   [0m [91m                                                       ~~~~~~~~~~~~[0m
+2026-01-10T12:27:44.848436Z	[96msrc/components/Services.astro[0m:[93m208[0m:[93m28[0m - [93mwarning[0m[90m ts(7044): [0mParameter 'index' implicitly has an 'any' type, but a better type may be inferred from usage.
+2026-01-10T12:27:44.848588Z	
+2026-01-10T12:27:44.848695Z	[7m208[0m         function goToSlide(index) {
+2026-01-10T12:27:44.848792Z	[7m   [0m [93m                           ~~~~~[0m
+2026-01-10T12:27:44.848925Z	[96msrc/components/Services.astro[0m:[93m179[0m:[93m13[0m - [93mwarning[0m[90m ts(7043): [0mVariable 'autoPlayInterval' implicitly has an 'any' type, but a better type may be inferred from usage.
+2026-01-10T12:27:44.849112Z	
+2026-01-10T12:27:44.849213Z	[7m179[0m         let autoPlayInterval;
+2026-01-10T12:27:44.849307Z	[7m   [0m [93m            ~~~~~~~~~~~~~~~~[0m
+2026-01-10T12:27:44.849408Z	
+2026-01-10T12:27:44.961465Z	[96msrc/layouts/Layout.astro[0m:[93m9[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'Props' is declared but never used.
+2026-01-10T12:27:44.961751Z	
+2026-01-10T12:27:44.961931Z	[7m9[0m interface Props {
+2026-01-10T12:27:44.962048Z	[7m [0m [93m          ~~~~~[0m
+2026-01-10T12:27:44.96215Z	
+2026-01-10T12:27:45.280411Z	[96msrc/pages/contact.astro[0m:[93m118[0m:[93m29[0m - [93mwarning[0m[90m ts(6385): [0m'frameborder' is deprecated.
+2026-01-10T12:27:45.280726Z	
+2026-01-10T12:27:45.280853Z	[7m118[0m                             frameborder="0"
+2026-01-10T12:27:45.280925Z	[7m   [0m [93m                            ~~~~~~~~~~~[0m
+2026-01-10T12:27:45.280994Z	[96msrc/pages/contact.astro[0m:[93m220[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+2026-01-10T12:27:45.281054Z	
+2026-01-10T12:27:45.281168Z	[7m220[0m             submitBtn.disabled = false;
+2026-01-10T12:27:45.281271Z	[7m   [0m [91m                      ~~~~~~~~[0m
+2026-01-10T12:27:45.281368Z	[96msrc/pages/contact.astro[0m:[93m211[0m:[93m18[0m - [91merror[0m[90m ts(2551): [0mProperty 'reset' does not exist on type 'HTMLElement'. Did you mean 'onreset'?
+2026-01-10T12:27:45.281502Z	
+2026-01-10T12:27:45.281596Z	[7m211[0m             form.reset();
+2026-01-10T12:27:45.281702Z	[7m   [0m [91m                 ~~~~~[0m
+2026-01-10T12:27:45.281804Z	[96msrc/pages/contact.astro[0m:[93m192[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'HTMLElement' is not assignable to parameter of type 'HTMLFormElement'.
+2026-01-10T12:27:45.281919Z	  Type 'HTMLElement' is missing the following properties from type 'HTMLFormElement': acceptCharset, action, autocomplete, elements, and 15 more.
+2026-01-10T12:27:45.282041Z	
+2026-01-10T12:27:45.282142Z	[7m192[0m         const formData = new FormData(form);
+2026-01-10T12:27:45.282205Z	[7m   [0m [91m                                      ~~~~[0m
+2026-01-10T12:27:45.282282Z	[96msrc/pages/contact.astro[0m:[93m186[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+2026-01-10T12:27:45.28236Z	
+2026-01-10T12:27:45.282492Z	[7m186[0m         submitBtn.disabled = true;
+2026-01-10T12:27:45.282591Z	[7m   [0m [91m                  ~~~~~~~~[0m
+2026-01-10T12:27:45.28275Z	
+2026-01-10T12:27:45.5003Z	[96msrc/pages/projects.astro[0m:[93m4[0m:[93m56[0m - [93mwarning[0m[90m ts(6133): [0m'Package' is declared but its value is never read.
+2026-01-10T12:27:45.500526Z	
+2026-01-10T12:27:45.500965Z	[7m4[0m import { Building2, Calendar, MapPin, X, CheckCircle2, Package } from 'lucide-react';
+2026-01-10T12:27:45.501208Z	[7m [0m [93m                                                       ~~~~~~~[0m
+2026-01-10T12:27:45.50131Z	[96msrc/pages/projects.astro[0m:[93m4[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'CheckCircle2' is declared but its value is never read.
+2026-01-10T12:27:45.501377Z	
+2026-01-10T12:27:45.501434Z	[7m4[0m import { Building2, Calendar, MapPin, X, CheckCircle2, Package } from 'lucide-react';
+2026-01-10T12:27:45.501491Z	[7m [0m [93m                                         ~~~~~~~~~~~~[0m
+2026-01-10T12:27:45.501551Z	[96msrc/pages/projects.astro[0m:[93m166[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+2026-01-10T12:27:45.501812Z	
+2026-01-10T12:27:45.501907Z	See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+2026-01-10T12:27:45.501975Z	
+2026-01-10T12:27:45.502031Z	Add the `is:inline` directive explicitly to silence this hint.
+2026-01-10T12:27:45.502094Z	
+2026-01-10T12:27:45.50234Z	[7m166[0m <script define:vars={{ caseStudies }}>
+2026-01-10T12:27:45.50247Z	[7m   [0m [93m        ~~~~~~~~~~~[0m
+2026-01-10T12:27:45.502819Z	
+2026-01-10T12:27:45.846579Z	[96msrc/pages/ar/contact.astro[0m:[93m118[0m:[93m29[0m - [93mwarning[0m[90m ts(6385): [0m'frameborder' is deprecated.
+2026-01-10T12:27:45.846979Z	
+2026-01-10T12:27:45.847135Z	[7m118[0m                             frameborder="0"
+2026-01-10T12:27:45.847247Z	[7m   [0m [93m                            ~~~~~~~~~~~[0m
+2026-01-10T12:27:45.847357Z	[96msrc/pages/ar/contact.astro[0m:[93m219[0m:[93m23[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+2026-01-10T12:27:45.84747Z	
+2026-01-10T12:27:45.847573Z	[7m219[0m             submitBtn.disabled = false;
+2026-01-10T12:27:45.847706Z	[7m   [0m [91m                      ~~~~~~~~[0m
+2026-01-10T12:27:45.84782Z	[96msrc/pages/ar/contact.astro[0m:[93m210[0m:[93m18[0m - [91merror[0m[90m ts(2551): [0mProperty 'reset' does not exist on type 'HTMLElement'. Did you mean 'onreset'?
+2026-01-10T12:27:45.84794Z	
+2026-01-10T12:27:45.848086Z	[7m210[0m             form.reset();
+2026-01-10T12:27:45.848199Z	[7m   [0m [91m                 ~~~~~[0m
+2026-01-10T12:27:45.848307Z	[96msrc/pages/ar/contact.astro[0m:[93m194[0m:[93m39[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'HTMLElement' is not assignable to parameter of type 'HTMLFormElement'.
+2026-01-10T12:27:45.848423Z	  Type 'HTMLElement' is missing the following properties from type 'HTMLFormElement': acceptCharset, action, autocomplete, elements, and 15 more.
+2026-01-10T12:27:45.848537Z	
+2026-01-10T12:27:45.848638Z	[7m194[0m         const formData = new FormData(form);
+2026-01-10T12:27:45.848736Z	[7m   [0m [91m                                      ~~~~[0m
+2026-01-10T12:27:45.848838Z	[96msrc/pages/ar/contact.astro[0m:[93m188[0m:[93m19[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+2026-01-10T12:27:45.848946Z	
+2026-01-10T12:27:45.849051Z	[7m188[0m         submitBtn.disabled = true;
+2026-01-10T12:27:45.849149Z	[7m   [0m [91m                  ~~~~~~~~[0m
+2026-01-10T12:27:45.849249Z	[96msrc/pages/ar/contact.astro[0m:[93m195[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+2026-01-10T12:27:45.849346Z	
+2026-01-10T12:27:45.849434Z	[7m195[0m         const data = Object.fromEntries(formData.entries());
+2026-01-10T12:27:45.849508Z	[7m   [0m [93m              ~~~~[0m
+2026-01-10T12:27:45.849591Z	
+2026-01-10T12:27:46.039877Z	[96msrc/pages/ar/projects.astro[0m:[93m4[0m:[93m56[0m - [93mwarning[0m[90m ts(6133): [0m'Package' is declared but its value is never read.
+2026-01-10T12:27:46.040202Z	
+2026-01-10T12:27:46.040368Z	[7m4[0m import { Building2, Calendar, MapPin, X, CheckCircle2, Package } from 'lucide-react';
+2026-01-10T12:27:46.040502Z	[7m [0m [93m                                                       ~~~~~~~[0m
+2026-01-10T12:27:46.040595Z	[96msrc/pages/ar/projects.astro[0m:[93m4[0m:[93m42[0m - [93mwarning[0m[90m ts(6133): [0m'CheckCircle2' is declared but its value is never read.
+2026-01-10T12:27:46.040679Z	
+2026-01-10T12:27:46.04077Z	[7m4[0m import { Building2, Calendar, MapPin, X, CheckCircle2, Package } from 'lucide-react';
+2026-01-10T12:27:46.040883Z	[7m [0m [93m                                         ~~~~~~~~~~~~[0m
+2026-01-10T12:27:46.040984Z	[96msrc/pages/ar/projects.astro[0m:[93m166[0m:[93m9[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+2026-01-10T12:27:46.041117Z	
+2026-01-10T12:27:46.041236Z	See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+2026-01-10T12:27:46.041327Z	
+2026-01-10T12:27:46.041491Z	Add the `is:inline` directive explicitly to silence this hint.
+2026-01-10T12:27:46.041594Z	
+2026-01-10T12:27:46.041688Z	[7m166[0m <script define:vars={{ caseStudies }}>
+2026-01-10T12:27:46.041825Z	[7m   [0m [93m        ~~~~~~~~~~~[0m
+2026-01-10T12:27:46.041959Z	
+2026-01-10T12:27:46.112439Z	Result (26 files): 
+2026-01-10T12:27:46.112711Z	- 9 errors
+2026-01-10T12:27:46.112794Z	- 0 warnings
+2026-01-10T12:27:46.112892Z	- 20 hints
+2026-01-10T12:27:46.113162Z	
+2026-01-10T12:27:46.142837Z	Failed: Error while executing user command. Exited with error code: 1
+2026-01-10T12:27:46.154872Z	Failed: build command exited with code: 1
+2026-01-10T12:27:47.556803Z	Failed: error occurred while running build command
