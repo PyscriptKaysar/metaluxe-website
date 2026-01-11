@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-react';
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 
 <Layout
@@ -177,6 +179,8 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
 
 </Layout>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <!-- CLIENT-SIDE LOGIC -->
 <script>
     const form = document.getElementById('contact-form');
@@ -206,6 +210,8 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
         // 2. Gather Data
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+        const turnstileToken = formData.get('cf-turnstile-response');
+        data.turnstileToken = typeof turnstileToken === 'string' ? turnstileToken : '';
 
         try {
             const response = await fetch('/api/contact', {

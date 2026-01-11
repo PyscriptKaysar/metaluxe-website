@@ -2,6 +2,7 @@ type Env = {
   RESEND_API_KEY: string;
   RESEND_FROM: string;
   RESEND_TO: string;
+  TURNSTILE_SECRET_KEY: string;
 };
 
 type ContactPayload = {
@@ -10,6 +11,7 @@ type ContactPayload = {
   email?: string;
   company?: string;
   message?: string;
+  turnstileToken?: string;
 };
 
 function escapeHtml(value: string) {
@@ -28,7 +30,7 @@ function isNonEmptyString(value: unknown, max: number) {
 export async function onRequestPost(context: { request: Request; env: Env }) {
   const { request, env } = context;
 
-  if (!env.RESEND_API_KEY || !env.RESEND_FROM || !env.RESEND_TO) {
+  if (!env.RESEND_API_KEY || !env.RESEND_FROM || !env.RESEND_TO || !env.TURNSTILE_SECRET_KEY) {
     return new Response(
       JSON.stringify({ ok: false, error: "Server not configured." }),
       { status: 500, headers: { "content-type": "application/json" } }
@@ -53,11 +55,55 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
     );
   }
 
-  const { name, phone = "", email, company = "", message } = payload;
+  const { name, phone = "", email, company = "", message, turnstileToken } = payload;
 
   if (!isNonEmptyString(name, 100) || !isNonEmptyString(email, 200) || !isNonEmptyString(message, 2000)) {
     return new Response(
       JSON.stringify({ ok: false, error: "Missing or invalid fields." }),
+      { status: 400, headers: { "content-type": "application/json" } }
+    );
+  }
+
+  if (!isNonEmptyString(turnstileToken, 2000)) {
+    return new Response(
+      JSON.stringify({ ok: false, error: "Please complete the verification." }),
+      { status: 400, headers: { "content-type": "application/json" } }
+    );
+  }
+
+  const clientIp =
+    request.headers.get("CF-Connecting-IP") ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    "";
+
+  const turnstileBody = new URLSearchParams({
+    secret: env.TURNSTILE_SECRET_KEY,
+    response: turnstileToken,
+  });
+  if (clientIp) {
+    turnstileBody.set("remoteip", clientIp);
+  }
+
+  const turnstileResponse = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body: turnstileBody.toString(),
+    }
+  );
+
+  if (!turnstileResponse.ok) {
+    return new Response(
+      JSON.stringify({ ok: false, error: "Verification failed." }),
+      { status: 502, headers: { "content-type": "application/json" } }
+    );
+  }
+
+  const turnstileResult = (await turnstileResponse.json()) as { success?: boolean };
+  if (!turnstileResult.success) {
+    return new Response(
+      JSON.stringify({ ok: false, error: "Verification failed." }),
       { status: 400, headers: { "content-type": "application/json" } }
     );
   }

@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-react';
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 
 <Layout
@@ -101,6 +103,10 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
 							<textarea name="message" required rows="4" class="w-full bg-gray-800 border border-gray-700 rounded p-4 text-white focus:border-accent focus:outline-none transition" placeholder="How can we help you?"></textarea>
 						</div>
 
+						{turnstileSiteKey ? (
+							<div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark"></div>
+						) : null}
+
 						<button type="submit" id="submit-btn" class="w-full bg-accent hover:bg-accent-hover text-primary font-bold py-4 rounded flex items-center justify-center gap-2 transition transform hover:scale-[1.02]">
 							<span id="btn-text" class="flex items-center gap-2"><Send className="w-5 h-5" /> Send Message</span>
                             <!-- Loader (Hidden by default) -->
@@ -174,6 +180,8 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
 
 </Layout>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <!-- CLIENT-SIDE LOGIC -->
 <script>
     const form = document.getElementById('contact-form');
@@ -203,6 +211,8 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Navigation } from 'lucide-re
         // 2. Gather Data
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+        const turnstileToken = formData.get('cf-turnstile-response');
+        data.turnstileToken = typeof turnstileToken === 'string' ? turnstileToken : '';
 
         try {
             const response = await fetch('/api/contact', {
